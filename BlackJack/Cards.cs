@@ -10,24 +10,32 @@ namespace BlackJack
     class Cards
     {
         public int value;
-        public string Suit;
-        public int point;
+        public string suit;
+        public int points;
+
+        private void getValue() { return value; }
+        private void setValue(int value){this.value = value;}
+        private void getSuit() { return suit; }
+        private void setSuit(string suit) { this.suit = suit; }
+        private void getPoints() { return points; }
+        private void setPoints(int points) { this.points = points; }
+
         public Cards(int s, int v)
         {
             v = value;
             switch (s)
             {
-                case 1: // If s == 1, then set the Suit to Clubs
-                    Suit = "♣";
+                case 1: // If s == 1, then set the suit to Clubs
+                    suit = "♣";
                     break;
-                case 2: // If s == 2, then set the Suit to Diamonds
-                    Suit = "♦";
+                case 2: // If s == 2, then set the suit to Diamonds
+                    suit = "♦";
                     break;
-                case 3: // If s == 3, then set the Suit to Hearts
-                    Suit = "♥";
+                case 3: // If s == 3, then set the suit to Hearts
+                    suit = "♥";
                     break;
-                case 4: // If s == 4, then set the Suit to Spades
-                    Suit = "♠";
+                case 4: // If s == 4, then set the suit to Spades
+                    suit = "♠";
                     break;
             }
             if (v > 10)

@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "DxOaoC4ajCLtKgqpo/N+T33qhiOJ/DK91C2mSDb6akF4mQbYT9RfwohRqJBAIb5KYBR8JXNM/vPo2hlS+QIxMA==",
+  "dgSpecHash": "pMdofx9Y/5HMILIO7MzsiH3C76aTf40xuB7PGSgvnQjoFtL++Ra1tlTgvVCH3P9qtTFnOX134ihxR1SzdHdD3w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\19237\\OneDrive\\桌面\\BlackJack\\BlackJack.csproj",
+  "projectFilePath": "C:\\Users\\trent\\Source\\Repos\\tmcelmury\\spring2021_group7\\BlackJack\\BlackJack.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\19237\\.nuget\\packages\\google.protobuf\\3.15.8\\google.protobuf.3.15.8.nupkg.sha512",
-    "C:\\Users\\19237\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
-    "C:\\Users\\19237\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512"
+    "C:\\Users\\trent\\.nuget\\packages\\google.protobuf\\3.15.8\\google.protobuf.3.15.8.nupkg.sha512",
+    "C:\\Users\\trent\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
+    "C:\\Users\\trent\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\trent\\.nuget\\packages\\system.numerics.vectors\\4.4.0\\system.numerics.vectors.4.4.0.nupkg.sha512",
+    "C:\\Users\\trent\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512"
   ],
   "logs": []
 }
