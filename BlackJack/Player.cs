@@ -12,13 +12,10 @@ namespace BlackJack
         private int id;
         //private int number;
         private int points = 0;
+
         public int GetId() { return id; }
         public void SetId(int id) { this.id = id; }
-        public Player()
-        {
-            hand = new Hand();
-            //this.number = number;
-        }
+
         public void Hit(Card card)
         {
             //TODO: needs method to add cards to hand

@@ -2,7 +2,7 @@
 using BlackJack;
 public class Deck : Hand
 {
-    private void Remove(Cards card)
+    private void Remove(Card card)
     {
         for(int x = 0; x < 52; x++)
         {
@@ -13,7 +13,7 @@ public class Deck : Hand
         }
 
     }
-	private Cards ShuffleDraw()
+	private Card ShuffleDraw()
     {
         Random random = new Random(0, 51);
         return generator[random];

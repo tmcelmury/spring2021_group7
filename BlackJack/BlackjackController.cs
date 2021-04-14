@@ -8,7 +8,7 @@ using BlackJack;
 namespace BlackJack
 {
     class BlackjackController{
-        private List<Player> players;
+        private List<Player> players = new List<Player>();
         private Dealer dealer = new Dealer();
         private Deck deck = new Deck();
 
