@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace BlackJack
 {
-    class Cards
+    class Card
     {
         public int value;
         public string suit;
         public int points;
 
-        private int getValue() { return value; }
-        private void setValue(int value){ this.value = value; }
-        private char getSuit() { return suit; }
+        public int getValue() { return value; }
+        private void setValue(int value){this.value = value;}
+        private string getSuit() { return suit; }
         private void setSuit(string suit) { this.suit = suit; }
         private int getPoints() { return points; }
         private void setPoints(int points) { this.points = points; }
 
-        public Cards(int s, int v)
+        public Card(int s, int v)
         {
             v = value;
             switch (s)
@@ -40,36 +40,34 @@ namespace BlackJack
             }
             if (v > 10)
             {
-                point = 10;
+                points = 10;
 
             }
             else if (v == 1)
             {
-                point = 11;
+                points = 11;
             }
             else
             {
-                point = value;
+                points = value;
             }
         }
 
-        public static Cards[] generator()
+        public static Card[] generator()
         {
-            Cards[] Deck = new Cards[52];
+            Card[] Deck = new Card[52];
             int counter = 0;
             for (int x = 0; x < 5; x++)
             {
                 for (int y = 0; y < 14; y++)
                 {
-                    Deck[counter] = new Cards(x, y);
+                    Deck[counter] = new Card(x, y);
                     counter++;
                 }
             }
             return Deck;
 
         }
-
-
 
 
     }
