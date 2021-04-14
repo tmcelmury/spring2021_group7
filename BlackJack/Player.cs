@@ -9,8 +9,11 @@ namespace BlackJack
     class Player
     {
         private Hand hand;
+        private int id;
         //private int number;
         private int points = 0;
+        public int GetId() { return id; }
+        public void SetId(int id) { this.id = id; }
         public Player()
         {
             hand = new Hand();
