@@ -9,41 +9,26 @@ namespace BlackJack
 {
     class Hand
     {
-        List<Card> hand;
+        Cards[] hand;
         int totalPoints;
-
-        public Hand()
-        {
-            this.hand = new List<Card>();
-        }
-
         private int getPoints()
         {
             //Needs to be implemented
-            return 0;
         }
-        private void getCard() { return; }
-        public static void Shuffle(ref Card[]Deck)
+        private void getCard() { return hand; }
+        public static void Shuffle(ref Cards[]Deck)
         {
             Random random = new Random();
-            Card card;
+            Cards card;
             int number;
         }
-        private void add(Card newCard)
-        {
-            // Needs to be implemented
-            this.hand.Add(newCard);
-            // adjust points depending on card value
-        }
-        private void remove(Card discard)
+        private void add(Cards newCard)
         {
             // Needs to be implemented
         }
-
-        public List<Card> getHand()
+        private void remove(Cards discard)
         {
-            return this.hand;
+            // Needs to be implemented
         }
-
     }
 }
