@@ -8,7 +8,7 @@ namespace BlackJack
 {
     class BlackjackController{
         private Player[] players;
-        private dealer = new Dealer;
+        private Dealer dealer = new Dealer();
 
     }
 }

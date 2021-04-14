@@ -10,12 +10,13 @@ namespace BlackJack
     {
         private Hand hand;
         //private int number;
+        private int points = 0;
         public Player()
         {
             hand = new Hand();
             //this.number = number;
         }
-        public void Hit(Cards card)
+        public void Hit(Card card)
         {
             //TODO: needs method to add cards to hand
            // hand.add(card);
@@ -32,9 +33,14 @@ namespace BlackJack
             }
         }
         public int Points()
-        {   
+        {
+
             //TODO: needs a way to see cards in hand or should points be in hand?
             //int points = 0;
+            foreach(Card card in this.hand.getHand())
+            {
+                this.points += card.getValue();
+            }
             //foreach (Cards card in this.hand.cards)
             //{
             //    points += card.point;
