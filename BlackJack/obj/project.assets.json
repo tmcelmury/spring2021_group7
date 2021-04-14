@@ -267,11 +267,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\trent\\Source\\Repos\\tmcelmury\\spring2021_group7\\BlackJack\\BlackJack.csproj",
+      "projectUniqueName": "C:\\Users\\trent\\Source\\Repos\\spring2021_group7\\BlackJack\\BlackJack.csproj",
       "projectName": "BlackJack",
-      "projectPath": "C:\\Users\\trent\\Source\\Repos\\tmcelmury\\spring2021_group7\\BlackJack\\BlackJack.csproj",
+      "projectPath": "C:\\Users\\trent\\Source\\Repos\\spring2021_group7\\BlackJack\\BlackJack.csproj",
       "packagesPath": "C:\\Users\\trent\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\trent\\Source\\Repos\\tmcelmury\\spring2021_group7\\BlackJack\\obj\\",
+      "outputPath": "C:\\Users\\trent\\Source\\Repos\\spring2021_group7\\BlackJack\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\trent\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,6 +1,6 @@
 ﻿using System;
-
-public class Dealer
+using BlackJack;
+public class Dealer : Player
 {
 
 }
