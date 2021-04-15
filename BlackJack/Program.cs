@@ -1,41 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
 using BlackJack;
 
-namespace BlackJack
+public class Program
 {
-    public class Program
+	public static void Main()
     {
-        public static void Main()
+        BlackjackController control = new BlackjackController();
+
+        Console.WriteLine("Welcome to BlackJack!\n");
+        Console.WriteLine("How many players are there? (Max 6)\n");
+        int numPlayers = Console.Read();
+
+        control.CreatePlayers(numPlayers);
+
+        //finish setup of game
+
+        while (control.GetPlayers().Capacity() > 1 && !control.Dealer.Bust())
         {
-            BlackjackController control = new BlackjackController();
+            // print out the state of the game, dealer on top, then players from player 1 to n below
 
-            Console.WriteLine("Welcome to BlackJack!\n");
-            Console.WriteLine("How many players are there? (Max 6)\n");
-            int numPlayers = Console.Read();
+            // ask players to go one at a time
 
-            control.CreatePlayers(numPlayers);
+            // dealer has chance to draw
 
-            //finish setup of game
+            // check if players bust, remove those who do, and update the number of players
+            List<Player> players = control.GetPlayers();
 
-            while (control.GetPlayers().Capacity > 1 && !control.Dealer.Bust())
+            for (int i = 0; i < numPlayers; i++)
             {
-                // print out the state of the game, dealer on top, then players from player 1 to n below
-
-                // ask players to go one at a time
-
-                // dealer has chance to draw
-
-                // check if players bust
-                for (int i = 0; i < numPlayers; i++)
+                if (players[i].Bust())
                 {
-                    List<Player> players = control.GetPlayers();
-                    for (int j = 0; j < players.Capacity; j++)
-                    {
-                        //if (players[i].)
-                }
+                    players.RemoveAt(i);
+                    numPlayers--;
+                    i--;
                 }
             }
+            control.SetPlayers(players);
         }
     }
 }
