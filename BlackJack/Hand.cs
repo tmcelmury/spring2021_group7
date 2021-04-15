@@ -7,7 +7,7 @@ using BlackJack;
 
 namespace BlackJack
 {
-    class Hand
+    public class Hand
     {
         List<Card> hand;
         int totalPoints;
@@ -29,7 +29,7 @@ namespace BlackJack
             Card card;
             int number;
         }
-        private void add(Card newCard)
+        public void add(Card newCard)
         {
             // Needs to be implemented
             this.hand.Add(newCard);

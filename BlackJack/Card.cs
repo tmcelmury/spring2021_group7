@@ -12,11 +12,10 @@ namespace BlackJack
         public int value;
         public string suit;
         
-
         public int getValue() { return value; }
-        private void setValue(int value){this.value = value;}
-        private string getSuit() { return suit; }
-        private void setSuit(string suit) { this.suit = suit; }
+        public void setValue(int value){this.value = value;}
+        public string getSuit() { return suit; }
+        public void setSuit(string suit) { this.suit = suit; }
 
         
 
