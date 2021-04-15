@@ -30,9 +30,7 @@ namespace BlackJack
                 control.GetPlayers()[i].Hit(initialHand[0]);
                 control.GetPlayers()[i].Hit(initialHand[1]);
             }
-            List<Card> initialHand = control.Deck.DealHand();
-            control.Dealer.Hit(initialHand[0]);
-            control.Dealer.Hit(initialHand[1]);
+            control.Dealer.PlayTurn();
 
             // begin the actual game, taking turns per round while there are still more than 1 player 
             // in, and the dealer has not busted
