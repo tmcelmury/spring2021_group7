@@ -15,6 +15,7 @@ namespace BlackJack
         public Deck Deck { get => deck; set => deck = value; }
         public Dealer Dealer { get => dealer; set => dealer = value; }
         public List<Player> GetPlayers() { return this.players; }
+        public void SetPlayers(List<Player> newList) { this.players = newList; }
 
         private bool Propose(Player user)
         {
