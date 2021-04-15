@@ -7,8 +7,8 @@ public class Program
     {
         BlackjackController control = new BlackjackController();
 
-        printf("Welcome to BlackJack!\n");
-        printf("How many players are there? (Max 6)\n");
+        Console.WriteLine("Welcome to BlackJack!\n");
+        Console.WriteLine("How many players are there? (Max 6)\n");
         int numPlayers = Console.Read();
 
         control.CreatePlayers(numPlayers);

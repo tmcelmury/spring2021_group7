@@ -10,16 +10,13 @@ namespace BlackJack
     {
         private Hand hand;
         private int id;
-        //private int number;
-        private int points = 0;
 
         public int GetId() { return id; }
         public void SetId(int id) { this.id = id; }
 
         public void Hit(Card card)
         {
-            //TODO: needs method to add cards to hand
-           // hand.add(card);
+            hand.add(card);
         }
         public bool Bust()
         {
@@ -34,19 +31,68 @@ namespace BlackJack
         }
         public int Points()
         {
-
-            //TODO: needs a way to see cards in hand or should points be in hand?
-            //int points = 0;
+            // 0 = Ace 1 0r 11 
+            // 1 = 2 2
+            // 2 = 3 3
+            // 3 = 4 4
+            // 4 = 5 5
+            // 5 = 6 6 
+            // 6 = 7 7
+            // 7 = 8 8 
+            // 8 = 9 9
+            // 9 = 10 10 
+            // 10 = J 10
+            // 11 = Q 10 
+            // 12 = K 10
+            int points = 0;
             foreach(Card card in this.hand.getHand())
             {
-                this.points += card.getValue();
+                points += GetPoints(card,false);
             }
-            //foreach (Cards card in this.hand.cards)
-            //{
-            //    points += card.point;
-            //}
-            //return points;
-            return 10;
+            if (points > 21 && ContainsAce(this.hand))
+            {
+                points = 0;
+                foreach (Card card in this.hand.getHand())
+                {
+                    points += GetPoints(card, true);
+                }
+            }
+            return points;
+        }
+        private int GetPoints(Card card, bool aceOne=false)
+        {
+            int points = 0;
+            if (card.getValue() == 0)
+            {
+                if (aceOne)
+                {
+                    points += 1;
+                }
+                else
+                {
+                    points += 11;
+                }
+            }
+            else if (card.getValue() >= 1 && card.getValue() <= 9)
+            {
+                points += card.getValue()+1;
+            }
+            else
+            {
+                points += 10;
+            }
+            return points;
+        }
+        private bool ContainsAce(Hand hand)
+        {
+            foreach(Card card in hand.getHand())
+            {
+                if(card.getValue() == 0)
+                {
+                    return true;
+                }
+            }
+                return false;
         }
     }
 }
