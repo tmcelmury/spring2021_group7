@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\trent\\Source\\Repos\\spring2021_group7\\BlackJack\\BlackJack.csproj": {}
+    "C:\\Users\\cwu\\Source\\Repos\\spring2021_group7\\BlackJack\\BlackJack.csproj": {}
   },
   "projects": {
-    "C:\\Users\\trent\\Source\\Repos\\spring2021_group7\\BlackJack\\BlackJack.csproj": {
+    "C:\\Users\\cwu\\Source\\Repos\\spring2021_group7\\BlackJack\\BlackJack.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\trent\\Source\\Repos\\spring2021_group7\\BlackJack\\BlackJack.csproj",
+        "projectUniqueName": "C:\\Users\\cwu\\Source\\Repos\\spring2021_group7\\BlackJack\\BlackJack.csproj",
         "projectName": "BlackJack",
-        "projectPath": "C:\\Users\\trent\\Source\\Repos\\spring2021_group7\\BlackJack\\BlackJack.csproj",
-        "packagesPath": "C:\\Users\\trent\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\trent\\Source\\Repos\\spring2021_group7\\BlackJack\\obj\\",
+        "projectPath": "C:\\Users\\cwu\\Source\\Repos\\spring2021_group7\\BlackJack\\BlackJack.csproj",
+        "packagesPath": "C:\\Users\\cwu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\cwu\\Source\\Repos\\spring2021_group7\\BlackJack\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\trent\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\cwu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,7 +25,8 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net50": {
+          "net5.0": {
+            "targetAlias": "net5.0",
             "projectReferences": {}
           }
         },
@@ -36,19 +37,30 @@
         }
       },
       "frameworks": {
-        "net50": {
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
             "Google.Protobuf": {
               "target": "Package",
               "version": "[3.15.8, )"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "win7-x86": {
-          "#import": []
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
         }
       }
     }

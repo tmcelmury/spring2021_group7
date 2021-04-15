@@ -1,50 +1,93 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+
 using BlackJack;
-public class Deck : Hand
+public class Deck 
 {
-    private void Remove(Card card)
+    private List<Card> cards;
+
+    //Initialize Deck
+    public Deck() 
     {
-        for(int x = 0; x < 52; x++)
+        InitializeDeck();    
+    }
+
+    //remove card from deck
+    public List<Card> DealHand()
+    {
+        // Create a temporary list of cards and give it the top two cards of the deck.
+        List<Card> hand = new List<Card>();
+        int ct = cards.Count;
+        if (ct > 2)
         {
-            if (card[x] = shuffleDraw)
-            {
-                remove card[x];
-            }
+            hand.Add(cards[ct - 1]);
+            hand.Add(cards[ct - 2]);
+            // Remove the cards added to the hand.
+            cards.RemoveRange(ct - 3, ct - 1);
+            return hand;
+        }
+        else
+        { 
+            Console.WriteLine("Not enough cards to deal!");
+            return null;
         }
 
     }
-	private Card ShuffleDraw()
-    {
-        Random random = new Random(0, 51);
-        return generator[random];
 
-    }
-    public static Card[] generator()
+    /// <summary>
+    /// Pick top card and remove it from the deck
+    /// </summary>
+    /// <returns>The top card of the deck</returns>
+    public Card DrawCard()
     {
-        // 0 = Ace 
-        // 1 = 2
-        // 2 = 3
-        // 3 = 4
-        // 4 = 5
-        // 5 = 6
-        // 6 = 7
-        // 7 = 8
-        // 8 = 9
-        // 9 = 10
-        // 10 = J
-        // 11 = Q
-        // 12 = K
-        Card[] Deck = new Card[52];
-        int counter = 0;
-        for (int x = 0; x < 5; x++)
+        int ct = cards.Count;
+        if (ct > 1)
         {
-            for (int y = 0; y < 13; y++)
+            Card card = cards[ct - 1];
+            cards.Remove(card);
+            return card;
+        }
+        else 
+        {
+            Console.WriteLine("No more card to draw!");
+            return null;
+        }
+        
+    }
+
+    public static List<Card> GenerateColdDeck()
+    {
+        List<Card> coldDeck = new List<Card>();
+        for (int i = 0; i < 13; i++)
+        {
+            for (int j = 0; j < 4; j++)
             {
-                Deck[counter] = new Card(x, y);
-                counter++;
+                coldDeck.Add(new Card((Suit)j, (Face)i));
             }
         }
-        return Deck;
-
+        return coldDeck;
     }
+
+    public void Shuffle()
+    {
+        Random rnd = new Random();
+
+        int n = cards.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rnd.Next(n + 1);
+            Card card = cards[k];
+            cards[k] = cards[n];
+            cards[n] = card;
+        }
+    }
+    public void InitializeDeck()
+    {
+        cards = GenerateColdDeck();
+        Shuffle();        
+    }
+
+
 }
