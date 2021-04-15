@@ -15,7 +15,7 @@ public class Program
 
         //finish setup of game
 
-        while (control.Players.get().Capacity() > 1 && !control.Dealer.Bust())
+        while (control.GetPlayers().Capacity() > 1 && !control.Dealer.Bust())
         {
             // print out the state of the game, dealer on top, then players from player 1 to n below
 
@@ -26,7 +26,11 @@ public class Program
             // check if players bust
             for (int i = 0; i < numPlayers; i++)
             {
-
+                List<Player> players = control.GetPlayers();
+                for (int i = 0; i < players.Capacity(); i++)
+                {
+                    if (players[i].)
+                }
             }
         }
     }
