@@ -8,7 +8,7 @@ namespace BlackJack
 {
     public class Player
     {
-        private Hand hand;
+        private List<Card> hand;
         private int id;
 
         public int GetId() { return id; }
@@ -16,7 +16,7 @@ namespace BlackJack
 
         public void Hit(Card card)
         {
-            hand.add(card);
+            this.hand.Add(card);
         }
         public bool Bust()
         {
@@ -45,14 +45,14 @@ namespace BlackJack
             // 11 = Q 10 
             // 12 = K 10
             int points = 0;
-            foreach(Card card in this.hand.getHand())
+            foreach(Card card in this.hand)
             {
                 points += GetPoints(card,false);
             }
             if (points > 21 && ContainsAce(this.hand))
             {
                 points = 0;
-                foreach (Card card in this.hand.getHand())
+                foreach (Card card in this.hand)
                 {
                     points += GetPoints(card, true);
                 }
@@ -83,9 +83,9 @@ namespace BlackJack
             }
             return points;
         }
-        private bool ContainsAce(Hand hand)
+        private bool ContainsAce(List<Card> hand)
         {
-            foreach(Card card in hand.getHand())
+            foreach(Card card in hand)
             {
                 if(card.getValue() == 0)
                 {
