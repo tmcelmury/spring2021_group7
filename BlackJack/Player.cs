@@ -8,7 +8,7 @@ namespace BlackJack
 {
     public class Player
     {
-        private List<Card> hand;
+        private List<Card> hand = new List<card>();
         private int id;
 
         public int GetId() { return id; }
