@@ -10,6 +10,7 @@ namespace BlackJack
         private bool holeRevealed = false;
 
 
+
         public bool HoleRevealed
         {
             get => holeRevealed;
