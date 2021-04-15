@@ -7,11 +7,16 @@ using System.Threading.Tasks;
 
 namespace BlackJack
 {
-    class Card
+    public class Card
     {
         public int value;
         public string suit;
-        
+
+        public Card(int value, string suit)
+        {
+            this.value = value;
+            this.suit = suit;
+        }
         public int getValue() { return value; }
         public void setValue(int value){this.value = value;}
         public string getSuit() { return suit; }

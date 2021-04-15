@@ -1,35 +1,39 @@
 ﻿using System;
+using System.Collections.Generic;
 using BlackJack;
 
-public class Program
+namespace BlackJack
 {
-	public static void Main()
+    public class Program
     {
-        BlackjackController control = new BlackjackController();
-
-        Console.WriteLine("Welcome to BlackJack!\n");
-        Console.WriteLine("How many players are there? (Max 6)\n");
-        int numPlayers = Console.Read();
-
-        control.CreatePlayers(numPlayers);
-
-        //finish setup of game
-
-        while (control.GetPlayers().Capacity() > 1 && !control.Dealer.Bust())
+        public static void Main()
         {
-            // print out the state of the game, dealer on top, then players from player 1 to n below
+            BlackjackController control = new BlackjackController();
 
-            // ask players to go one at a time
+            Console.WriteLine("Welcome to BlackJack!\n");
+            Console.WriteLine("How many players are there? (Max 6)\n");
+            int numPlayers = Console.Read();
 
-            // dealer has chance to draw
+            control.CreatePlayers(numPlayers);
 
-            // check if players bust
-            for (int i = 0; i < numPlayers; i++)
+            //finish setup of game
+
+            while (control.GetPlayers().Capacity > 1 && !control.Dealer.Bust())
             {
-                List<Player> players = control.GetPlayers();
-                for (int i = 0; i < players.Capacity(); i++)
+                // print out the state of the game, dealer on top, then players from player 1 to n below
+
+                // ask players to go one at a time
+
+                // dealer has chance to draw
+
+                // check if players bust
+                for (int i = 0; i < numPlayers; i++)
                 {
-                    if (players[i].)
+                    List<Player> players = control.GetPlayers();
+                    for (int j = 0; j < players.Capacity; j++)
+                    {
+                        //if (players[i].)
+                }
                 }
             }
         }

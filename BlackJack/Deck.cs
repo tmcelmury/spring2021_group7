@@ -63,7 +63,7 @@ public class Deck
         {
             for (int j = 0; j < 4; j++)
             {
-                coldDeck.Add(new Card((Suit)j, (Face)i));
+                coldDeck.Add(new Card(i, j.ToString()));
             }
         }
         return coldDeck;

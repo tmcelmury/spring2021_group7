@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackJack
 {
-    class Player
+    public class Player
     {
         private Hand hand;
         private int id;
@@ -93,6 +93,16 @@ namespace BlackJack
                 }
             }
                 return false;
+        }
+
+        public int getId()
+        {
+            return this.id;
+        }
+
+        public void setId(int id)
+        {
+            this.id = id;
         }
     }
 }
