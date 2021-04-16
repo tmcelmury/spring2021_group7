@@ -40,7 +40,7 @@ namespace BlackJack
                 // print out the state of the game, dealer on top, then players from player 1 to n below
 
                 // ask players to go one at a time
-                for (int i = 0; i < players.Capacity(); i++)
+                for (int i = 0; i < players.Capacity; i++)
                 {
                     bool draw = control.Propose(players[i]);
                     if (draw)
@@ -54,7 +54,7 @@ namespace BlackJack
                 control.Dealer.PlayTurn();
 
                 // check if players bust, if they do, remove them from the game
-                for (int i = 0; i < players.Capacity(); i++)
+                for (int i = 0; i < players.Capacity; i++)
                 {
                    if (players[i].Bust())
                     {

@@ -17,17 +17,17 @@ namespace BlackJack
         public List<Player> GetPlayers() { return this.players; }
         public void SetPlayers(List<Player> newList) { this.players = newList; }
 
-        private bool Propose(Player user)
+        public bool Propose(Player user)
         {
             Console.Write("Player : %i \nHit(1) or Stand(0)?\n", user.getId());
             int answer = Console.Read();
             if (answer == 1) { return true; }
             else { return false; }
         }
-        private Card Draw() {
+        public Card Draw() {
             return this.deck.DrawCard();
         }
-        private void BustPlayer(Player outPlayer) { players.Remove(outPlayer); }
+        public void BustPlayer(Player outPlayer) { players.Remove(outPlayer); }
 
         public void CreatePlayers(int num)
         {
