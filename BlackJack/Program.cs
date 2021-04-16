@@ -16,6 +16,10 @@ namespace BlackJack
 
             control.CreatePlayers(numPlayers);
 
+
+            // begin the actual game, taking turns per round while there are still more than 1 player
+            // in, and the dealer has not busted
+
             Deck deck = control.getDeck();
 
             Dealer dealer = control.getDealer();
@@ -31,7 +35,7 @@ namespace BlackJack
             List<Player> activePlayers = new List<Player>(control.GetPlayers());
 
             //create and initalize a final scores list to find the winner
-            Dictionary<int, int> finalScores = new Dictionary<int, int>();
+            Dictionary<int,int> finalScores = new Dictionary<int, int>();
 
             while (activePlayers.Count > 1)
             {
@@ -40,7 +44,7 @@ namespace BlackJack
                 {
                     Player player = activePlayers[i];
                     int answer = -1;
-                    while (answer != 1)
+                    while(answer != 1)
                     {
                         Console.Clear();
                         foreach (Player p in control.GetPlayers())
@@ -57,11 +61,10 @@ namespace BlackJack
                         {
                             answer = dealer.ProposeHitOrStay(player);
                         }
-                        if (answer == 0 && !(player.CalculateScore() > 21))
+                        if(answer == 0 && !(player.CalculateScore() > 21))
                         {
                             dealer.Deal(player, deck);
-                        }
-                        else
+                        } else
                         {
                             finalScores.Add(player.getId(), player.CalculateScore());
                             activePlayers.RemoveAt(i);
@@ -80,8 +83,7 @@ namespace BlackJack
                 }
                 Console.WriteLine("\n");
                 control.DetermineWinner(finalScores);
-
-
+                Console.ReadKey();
             }
 
             Console.WriteLine("GAME FINISHED");

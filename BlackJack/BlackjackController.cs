@@ -19,6 +19,7 @@ namespace BlackJack
         }
 
         public Dealer getDealer()
+
         {
             return this.dealer;
         }
@@ -27,6 +28,7 @@ namespace BlackJack
         {
             return this.players;
         }
+
 
         public void CreatePlayers(int num)
         {

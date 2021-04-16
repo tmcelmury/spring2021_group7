@@ -22,7 +22,6 @@ namespace BlackJack
         {
             Console.Write("Player : {0} \nHit(0) or Stand(1)?\n", user.getId());
             int answer = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("\nUSER ANSWERED: {0}", answer);
             return answer;
         }
 
@@ -40,7 +39,6 @@ namespace BlackJack
                 Console.WriteLine("DEALER HITS!\n");
 
                 Deal(this, deck);
-                //Console.Clear();
                 Console.WriteLine("Dealer:");
                 foreach (Card c in this.getHand())
                 {
