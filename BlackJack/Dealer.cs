@@ -5,63 +5,51 @@ namespace BlackJack
 {
     public class Dealer : Player
     {
-        // The "Hole" card is the card at the beginning of the game that the other players can not see
-        private Card hole;
-        private bool holeRevealed = false;
-
-
-
-        public bool HoleRevealed
+        public void Deal(Player player, Deck deck)
         {
-            get => holeRevealed;
-            set => holeRevealed = value;
-        }
-
-        public Card Hole
-        {
-            get => hole;
-            set => hole = value;
-        }
-
-
-        public void PlayTurn()
-        {
-            if (this.Points() == 0)
+            if (deck.getDeck().Count != 0)
             {
-                // TODO: Waiting on Deck implementation
-                // this.Hit(Deck.ShuffleDraw());
-                this.DrawHole();
-                return;
-            }
-
-            if (this.HoleRevealed == false)
-            {
-                this.HoleRevealed = true;
-            }
-
-            if (this.Points() < 17)
-            {
-                // TODO: Waiting on Deck implementation
-                // this.Hit(Deck.ShuffleDraw());
+                Card card = deck.getDeck().Pop();
+                player.getHand().Add(card);
             }
             else
             {
-                // Stand
-                return;
+                Console.WriteLine("Deck is empty");
             }
         }
 
-        public void DrawHole()
+        public int ProposeHitOrStay(Player user)
         {
-            // TODO: Waiting on Deck implementation
-            // this.Hole = Deck.ShuffleDraw();
+            Console.Write("Player : {0} \nHit(0) or Stand(1)?\n", user.getId());
+            int answer = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("\nUSER ANSWERED: {0}", answer);
+            return answer;
         }
 
-        public void RevealHole()
+        public void Play(Deck deck)
         {
-            this.Hit(this.Hole);
-            this.HoleRevealed = true;
+            Console.WriteLine("Dealer:");
+            foreach (Card c in this.getHand())
+            {
+                Console.WriteLine(c.ToString());
+            }
+            Console.WriteLine("Score: {0}\n", this.CalculateScore().ToString());
+
+            while (CalculateScore() < 17)
+            {
+                Console.WriteLine("DEALER HITS!\n");
+
+                Deal(this, deck);
+                //Console.Clear();
+                Console.WriteLine("Dealer:");
+                foreach (Card c in this.getHand())
+                {
+                    Console.WriteLine(c.ToString());
+                }
+                Console.WriteLine("Score: {0}\n", this.CalculateScore().ToString());
+            }
+            Console.WriteLine("DEALER STAYS\n");
+            return;
         }
     }
 }
-
