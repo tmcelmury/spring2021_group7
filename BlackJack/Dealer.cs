@@ -24,6 +24,7 @@ namespace BlackJack
         }
 
 
+        /*
         public void PlayTurn()
         {
             if (this.Points() == 0)
@@ -50,11 +51,11 @@ namespace BlackJack
                 return;
             }
         }
+        */
 
-        public void DrawHole()
+        public void DrawHole(Card card)
         {
-            // TODO: Waiting on Deck implementation
-            // this.Hole = Deck.ShuffleDraw();
+            this.Hole = card;
         }
 
         public void RevealHole()

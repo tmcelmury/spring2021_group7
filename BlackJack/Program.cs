@@ -30,7 +30,8 @@ namespace BlackJack
                 control.GetPlayers()[i].Hit(initialHand[0]);
                 control.GetPlayers()[i].Hit(initialHand[1]);
             }
-            control.Dealer.PlayTurn();
+            control.Dealer.Hit(control.Deck.DrawCard());
+            control.Dealer.DrawHole(control.Deck.DrawCard());
 
             // begin the actual game, taking turns per round while there are still more than 1 player 
             // in, and the dealer has not busted
@@ -51,7 +52,14 @@ namespace BlackJack
                 }
 
                 // dealer has chance to draw
-                control.Dealer.PlayTurn();
+                if (control.Dealer.HoleRevealed == false)
+                {
+                    control.Dealer.RevealHole();
+                }
+                if (control.Dealer.Points() < 17)
+                { 
+                    control.Dealer.Hit(control.Deck.DrawCard());
+                }
 
                 // check if players bust, if they do, remove them from the game
                 for (int i = 0; i < players.Capacity; i++)
