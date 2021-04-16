@@ -5,6 +5,7 @@ namespace BlackJack
 {
     public class Dealer : Player
     {
+<<<<<<< Updated upstream
         // The "Hole" card is the card at the beginning of the game that the other players can not see
         private Card hole;
         private bool holeRevealed = false;
@@ -12,6 +13,12 @@ namespace BlackJack
 
 
         public bool HoleRevealed
+=======
+
+
+        public void Deal(Player player, Deck deck)
+
+>>>>>>> Stashed changes
         {
             get => holeRevealed;
             set => holeRevealed = value;

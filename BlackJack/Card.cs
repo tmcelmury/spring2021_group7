@@ -16,6 +16,15 @@ namespace BlackJack
         {
             this.value = value;
             this.suit = suit;
+<<<<<<< Updated upstream
+=======
+        }
+        public Card(string suit, string type, int value)
+        {
+            this.value = value;
+            this.suit = suit;
+            this.type = type;
+>>>>>>> Stashed changes
         }
         public int getValue() { return value; }
         public void setValue(int value){this.value = value;}
