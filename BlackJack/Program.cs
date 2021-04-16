@@ -17,7 +17,7 @@ namespace BlackJack
             control.CreatePlayers(numPlayers);
 
 
-            // begin the actual game, taking turns per round while there are still more than 1 player
+            // begin the actual game, taking turns per round while there are still 1 or more players
             // in, and the dealer has not busted
 
             Deck deck = control.getDeck();
@@ -37,7 +37,7 @@ namespace BlackJack
             //create and initalize a final scores list to find the winner
             Dictionary<int,int> finalScores = new Dictionary<int, int>();
 
-            while (activePlayers.Count > 1)
+            while (activePlayers.Count > 0)
             {
 
                 for (int i = activePlayers.Count - 1; i >= 0; i--)
