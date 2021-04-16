@@ -1,5 +1,0 @@
-C:\Users\cwu\Source\Repos\spring2021_group7\BlackJack\obj\Debug\net5.0\BlackJack.csprojAssemblyReference.cache
-C:\Users\cwu\Source\Repos\spring2021_group7\BlackJack\obj\Debug\net5.0\BlackJack.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\cwu\Source\Repos\spring2021_group7\BlackJack\obj\Debug\net5.0\BlackJack.AssemblyInfoInputs.cache
-C:\Users\cwu\Source\Repos\spring2021_group7\BlackJack\obj\Debug\net5.0\BlackJack.AssemblyInfo.cs
-C:\Users\cwu\Source\Repos\spring2021_group7\BlackJack\obj\Debug\net5.0\BlackJack.csproj.CoreCompileInputs.cache
