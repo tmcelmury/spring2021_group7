@@ -9,36 +9,31 @@ namespace BlackJack
 {
     public class Card
     {
-        public int value;
-        public string suit;
+        private string suit;
+        private int value;
+        private string type;
 
-        public Card(int value, string suit)
+        public Card(string suit, string type, int value)
         {
             this.value = value;
             this.suit = suit;
+            this.type = type;
         }
-        public int getValue() { return value; }
-        public void setValue(int value){this.value = value;}
         public string getSuit() { return suit; }
-        public void setSuit(string suit) { this.suit = suit; }
 
-        
+        override
+        public String ToString()
+        {
+            return this.type + " of " + this.suit;
+        }
+
+        public int getValue()
+        {
+            return this.value;
+        }
+
 
 
     }
-    
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

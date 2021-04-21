@@ -1,93 +1,83 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-
+using System.Linq;
 using BlackJack;
-public class Deck 
+public class Deck
 {
-    private List<Card> cards;
+    private Stack<Card> deck = new Stack<Card>();
 
     //Initialize Deck
-    public Deck() 
+    public Deck()
     {
-        InitializeDeck();    
-    }
-
-    //remove card from deck
-    public List<Card> DealHand()
-    {
-        // Create a temporary list of cards and give it the top two cards of the deck.
-        List<Card> hand = new List<Card>();
-        int ct = cards.Count;
-        if (ct > 2)
-        {
-            hand.Add(cards[ct - 1]);
-            hand.Add(cards[ct - 2]);
-            // Remove the cards added to the hand.
-            cards.RemoveRange(ct - 3, ct - 1);
-            return hand;
-        }
-        else
-        { 
-            Console.WriteLine("Not enough cards to deal!");
-            return null;
-        }
-
-    }
-
-    /// <summary>
-    /// Pick top card and remove it from the deck
-    /// </summary>
-    /// <returns>The top card of the deck</returns>
-    public Card DrawCard()
-    {
-        int ct = cards.Count;
-        if (ct > 1)
-        {
-            Card card = cards[ct - 1];
-            cards.Remove(card);
-            return card;
-        }
-        else 
-        {
-            Console.WriteLine("No more card to draw!");
-            return null;
-        }
-        
-    }
-
-    public static List<Card> GenerateColdDeck()
-    {
-        List<Card> coldDeck = new List<Card>();
-        for (int i = 0; i < 13; i++)
-        {
-            for (int j = 0; j < 4; j++)
-            {
-                coldDeck.Add(new Card(i, j.ToString()));
-            }
-        }
-        return coldDeck;
+        InitializeDeck();
     }
 
     public void Shuffle()
     {
-        Random rnd = new Random();
-
-        int n = cards.Count;
-        while (n > 1)
-        {
-            n--;
-            int k = rnd.Next(n + 1);
-            Card card = cards[k];
-            cards[k] = cards[n];
-            cards[n] = card;
-        }
+        Random random = new Random();
+        Card[] cards = this.deck.ToArray();
+        Card[] shuffledCards = cards.OrderBy(x => random.Next()).ToArray();
+        this.deck = new Stack<Card>(shuffledCards);
     }
+
+    //the switch case statements are to make the console printing look nicer
     public void InitializeDeck()
     {
-        cards = GenerateColdDeck();
-        Shuffle();        
+        for (int i = 1; i <= 4; i++)
+        {
+            String suit = null;
+            switch (i)
+            {
+                case 1:
+                    suit = "Clubs";
+                    break;
+                case 2:
+                    suit = "Diamonds";
+                    break;
+                case 3:
+                    suit = "Hearts";
+                    break;
+                case 4:
+                    suit = "Spades";
+                    break;
+            }
+
+            for (int j = 1; j <= 13; j++)
+            {
+                string type = j.ToString();
+                switch (type)
+                {
+                    case "1":
+                        type = "Ace";
+                        break;
+                    case "11":
+                        type = "Jack";
+                        break;
+                    case "12":
+                        type = "Queen";
+                        break;
+                    case "13":
+                        type = "King";
+                        break;
+                }
+                Card card;
+                if (j >= 10)
+                {
+                    card = new Card(suit, type, 10);
+                }
+                else
+                {
+                    card = new Card(suit, type, j);
+                }
+                deck.Push(card);
+            }
+        }
+        this.Shuffle();
     }
 
-
+    public Stack<Card> getDeck()
+    {
+        return this.deck;
+    }
 }

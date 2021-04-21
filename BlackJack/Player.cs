@@ -8,19 +8,19 @@ namespace BlackJack
 {
     public class Player
     {
-        private List<Card> hand = new List<Card>();
+        private List<Card> hand;
         private int id;
 
+        public Player()
+        {
+            this.hand = new List<Card>();
+        }
         public int GetId() { return id; }
         public void SetId(int id) { this.id = id; }
 
-        public void Hit(Card card)
+        public bool Busted()
         {
-            this.hand.Add(card);
-        }
-        public bool Bust()
-        {
-           if (this.Points() > 21)
+            if (this.CalculateScore() > 21)
             {
                 return true;
             }
@@ -29,70 +29,35 @@ namespace BlackJack
                 return false;
             }
         }
-        public int Points()
+
+        public int CalculateScore()
         {
-            // 0 = Ace 1 0r 11 
-            // 1 = 2 2
-            // 2 = 3 3
-            // 3 = 4 4
-            // 4 = 5 5
-            // 5 = 6 6 
-            // 6 = 7 7
-            // 7 = 8 8 
-            // 8 = 9 9
-            // 9 = 10 10 
-            // 10 = J 10
-            // 11 = Q 10 
-            // 12 = K 10
             int points = 0;
-            foreach(Card card in this.hand)
+            bool hasAce = false;
+            foreach (Card card in this.hand)
             {
-                points += GetPoints(card,false);
-            }
-            if (points > 21 && ContainsAce(this.hand))
-            {
-                points = 0;
-                foreach (Card card in this.hand)
+                int cardValue = card.getValue();
+
+
+                //if their is a card with value 1 (ace) in hand
+                //and the player doesn't already have an ace
+                //then the ace will be treated as an 11 and hasAce is updated
+                if (cardValue == 1 && !hasAce)
                 {
-                    points += GetPoints(card, true);
+                    hasAce = true;
+                    cardValue = 11;
+                }
+                points += cardValue;
+
+                //if we have an ace and have busted
+                //we revert the ace back to 1 point in an attempt to "unbust"
+                if (points > 21 && hasAce)
+                {
+                    points -= 10;
+                    hasAce = false;
                 }
             }
             return points;
-        }
-        private int GetPoints(Card card, bool aceOne=false)
-        {
-            int points = 0;
-            if (card.getValue() == 0)
-            {
-                if (aceOne)
-                {
-                    points += 1;
-                }
-                else
-                {
-                    points += 11;
-                }
-            }
-            else if (card.getValue() >= 1 && card.getValue() <= 9)
-            {
-                points += card.getValue()+1;
-            }
-            else
-            {
-                points += 10;
-            }
-            return points;
-        }
-        private bool ContainsAce(List<Card> hand)
-        {
-            foreach(Card card in hand)
-            {
-                if(card.getValue() == 0)
-                {
-                    return true;
-                }
-            }
-                return false;
         }
 
         public int getId()
@@ -103,6 +68,16 @@ namespace BlackJack
         public void setId(int id)
         {
             this.id = id;
+        }
+
+        public void AddCardToHand(Card card)
+        {
+            this.hand.Add(card);
+        }
+
+        public List<Card> getHand()
+        {
+            return this.hand;
         }
     }
 }
