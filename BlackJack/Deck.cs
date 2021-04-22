@@ -24,6 +24,7 @@ public class Deck
     //the switch case statements are to make the console printing look nicer
     public void InitializeDeck()
     {
+        deck.Clear();
         for (int i = 1; i <= 4; i++)
         {
             String suit = null;
