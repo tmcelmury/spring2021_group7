@@ -41,8 +41,10 @@ namespace BlackJack
         }
 
 
-        public void DetermineWinner(Dictionary<int, int> scores)
+        public List<int> DetermineWinner(Dictionary<int, int> scores)
         {
+            //a list for the players determined to be winners
+            List<int> finalWinners = new List<int>();
 
             //a list that shows which players busted
             List<bool> busted = new List<bool>();
@@ -60,7 +62,8 @@ namespace BlackJack
             if (!busted.Any(o => o != busted[0]) && busted[0])
             {
                 Console.WriteLine("DEALER WINS!");
-                return;
+                finalWinners.Add(0);
+                return finalWinners;
             }
 
             //select all players who have a blackjack (21 points)
@@ -71,7 +74,8 @@ namespace BlackJack
                 if (blackjacks.Contains(0))
                 {
                     Console.WriteLine("DEALER WINS!");
-                    return;
+                    finalWinners.Add(0);
+                    return finalWinners;
                 }
                 else
                 {
@@ -79,8 +83,9 @@ namespace BlackJack
                     foreach (int id in blackjacks)
                     {
                         Console.WriteLine("PLAYER {0} WINS!", id);
+                        finalWinners.Add(id);
                     }
-                    return;
+                    return finalWinners;
                 }
             }
             else
@@ -94,15 +99,17 @@ namespace BlackJack
                 if (winners.Contains(0))
                 {
                     Console.WriteLine("DEALER WINS!");
-                    return;
+                    finalWinners.Add(0);
+                    return finalWinners;
                 }
                 else
                 {
                     foreach (var winner in winners)
                     {
                         Console.WriteLine("PLAYER {0} WINS!", winner);
+                        finalWinners.Add(winner);
                     }
-                    return;
+                    return finalWinners;
                 }
             }
         }
