@@ -83,5 +83,10 @@ namespace Solitaire
         {
             return this.deck;
         }
+
+        public Card Draw()
+        {
+            return this.getDeck().Pop();
+        }
     }
 }
