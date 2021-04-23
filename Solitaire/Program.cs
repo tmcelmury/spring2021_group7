@@ -6,7 +6,10 @@ namespace Solitaire
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("SOLITAIRE!\n");
+
+            GameTable gameTable = new GameTable();
+            gameTable.Display();
         }
     }
 }

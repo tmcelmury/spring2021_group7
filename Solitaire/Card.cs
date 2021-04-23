@@ -31,6 +31,11 @@ namespace Solitaire
             return this.value;
         }
 
+        public string getDisplay()
+        {
+            return this.value.ToString() +                                                                                                                                                          this.suit[0];
+        }
+
 
 
     }
