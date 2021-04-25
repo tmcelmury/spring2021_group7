@@ -8,8 +8,8 @@ namespace Solitaire
 {
     public class GameTable
     {
-        private Stack<Card> deck;
-        private Stack<Card> faceUpDeck;
+        public Stack<Card> deck = new Stack<Card>();
+        public Stack<Card> faceUpDeck = new Stack<Card>();
 
         // game board rows
         public List<Card> faceUp1 = new List<Card>();
@@ -30,8 +30,17 @@ namespace Solitaire
         public List<Card> spadeAce = new List<Card>();
         public List<Card> diamondAce = new List<Card>();
 
+        //public List<List<Card>> faceUp = new List<List<Card>>();
+        //public List<List<Card>> faceDown = new List<List<Card>>();
+
+
         public GameTable()
         {
+            //for (int i = 0; i < 7; i++)
+            //{
+            //    faceUp[i] = new List<Card>();
+            //    faceDown[i] = new List<Card>();
+            //}
             deck = new Deck().getDeck();
             faceUp1.Add(deck.Pop());
             faceUp2.Add(deck.Pop());
@@ -62,11 +71,40 @@ namespace Solitaire
             }
         }
         // displays the rows
-        // x's are blank cards
+        // Xs's are blank cards
+        public void DeckFlip()
+        {
+            if (deck.Count != 0)
+            {
+                Card c = deck.Pop();
+                faceUpDeck.Push(c);
+            }
+            else
+            {
+                Console.WriteLine("Deck is empty");
+            }
+        }
+
+        public void StackFlip(int row)
+        {
+            if (row == 2)
+            {
+                if (faceDown2.Count != 0)
+                {
+                    Card c = faceDown2[0];
+                    faceDown2.Remove(c);
+                    faceUp2.Add(c);
+                }
+            }
+        }
         public void Display()
         {
             // deck
             Console.Write("0: ");
+            foreach (Card c in faceUpDeck)
+            {
+                Console.Write(c.getDisplay());
+            }
             Console.WriteLine();
             // rows
             Console.Write("1: ");

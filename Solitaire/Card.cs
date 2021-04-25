@@ -33,7 +33,7 @@ namespace Solitaire
 
         public string getDisplay()
         {
-            return this.value.ToString() +                                                                                                                                                          this.suit[0];
+            return this.value.ToString() + this.suit[0] + " " ;
         }
 
 
