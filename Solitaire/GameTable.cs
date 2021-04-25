@@ -11,7 +11,6 @@ namespace Solitaire
         public Stack<Card> deck = new Stack<Card>();
         public Stack<Card> faceUpDeck = new Stack<Card>();
 
-        // game board rows
         public List<Card> heartAce = new List<Card>();
         public List<Card> clubAce = new List<Card>();
         public List<Card> spadeAce = new List<Card>();
@@ -58,8 +57,7 @@ namespace Solitaire
                 faceDown[7].Add(deck.Pop());
             }
         }
-        // displays the rows
-        // Xs's are blank cards
+        // Flips the deck
         public void DeckFlip()
         {
             if (deck.Count != 0)
@@ -97,6 +95,7 @@ namespace Solitaire
                 faceUp[source].Clear();
             }
         }
+        // Displays for testing
         public void Display()
         {
             // deck
