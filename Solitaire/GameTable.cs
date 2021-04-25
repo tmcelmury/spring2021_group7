@@ -73,6 +73,7 @@ namespace Solitaire
             }
         }
 
+        // Flips a card from face down to up
         public void StackFlip(int row)
         {
             if (faceDown[row].Count != 0)
@@ -80,6 +81,20 @@ namespace Solitaire
                 Card c = faceDown[row][0];
                 faceDown[row].Remove(c);
                 faceUp[row].Add(c);
+            }
+        }
+
+        // Moves a card from one column to another
+        public void MoveCard(int source, int destination)
+        {
+            if (faceUp[source].Count != 0)
+            {
+                foreach (Card c in faceUp[source])
+                {
+                    //faceUp[source].Remove(c);
+                    faceUp[destination].Add(c);
+                }
+                faceUp[source].Clear();
             }
         }
         public void Display()

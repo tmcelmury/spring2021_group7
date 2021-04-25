@@ -26,8 +26,18 @@ namespace Solitaire
                     {
                         gameTable.StackFlip(flipRow);
                     }
+                }else if (input == "m")
+                {
+                    Console.WriteLine("\nPick source row from 0-7");
+                    int source = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("\nPick destination row from 1-7");
+                    int destination = Convert.ToInt32(Console.ReadLine());
+                    gameTable.MoveCard(source, destination);
                 }
-                Console.WriteLine("\nPick row from 0-7");                
+                else
+                {
+                    Console.WriteLine("\nMove(m) or flip(f)");
+                }
             }
         }
     }
