@@ -90,7 +90,7 @@ namespace Solitaire
                 if (faceUp[source].Count != 0)
                 {
                     int previous = faceUp[destination].Count;
-                    foreach (Card c in faceUp[source])
+                    foreach (Card c in faceUp[source].ToList())
                     {
                         //if (c.getValue() + 1 == faceUp[destination][faceUp[destination].Count - 1].getValue())
                             faceUp[destination].Add(c);
