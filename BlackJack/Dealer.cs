@@ -18,7 +18,6 @@ namespace BlackJack
                 Console.WriteLine("Deck is empty");
             }
         }
-        */
 
         public int ProposeHitOrStay(Player user)
         {
