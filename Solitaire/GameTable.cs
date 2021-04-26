@@ -85,14 +85,30 @@ namespace Solitaire
         // Moves a card from one column to another
         public void MoveCard(int source, int destination)
         {
-            if (faceUp[source].Count != 0)
+            if (source > 0)
             {
-                foreach (Card c in faceUp[source])
+                if (faceUp[source].Count != 0)
                 {
-                    //faceUp[source].Remove(c);
+                    int previous = faceUp[destination].Count;
+                    foreach (Card c in faceUp[source])
+                    {
+                        //if (c.getValue() + 1 == faceUp[destination][faceUp[destination].Count - 1].getValue())
+                            faceUp[destination].Add(c);
+                    }
+                    if (previous != faceUp[destination].Count)
+                    {
+                        faceUp[source].Clear();
+                        //StackFlip(source);
+                    }
+                }
+            }
+            else
+            {
+                if (faceUpDeck.Count !=0)
+                {
+                    Card c = faceUpDeck.Pop();
                     faceUp[destination].Add(c);
                 }
-                faceUp[source].Clear();
             }
         }
         // Displays for testing
@@ -102,7 +118,7 @@ namespace Solitaire
             Console.Write("0: ");
             foreach (Card c in faceUpDeck)
             {
-                Console.Write(c.getDisplay());
+                Console.Write(c.getDisplay());            
             }
             Console.WriteLine();
             // rows
