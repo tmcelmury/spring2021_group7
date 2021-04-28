@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CardGame
 {
-    class Solitaire
+    partial class Solitaire
     {
     }
 }
