@@ -27,12 +27,10 @@ namespace Solitaire
         // Flips a card from face down to up
         public void StackFlip(int row)
         {
-            if (gameTable.faceDown[row].Count != 0)
-            {
-                Card c = gameTable.faceDown[row][0];
-                gameTable.faceDown[row].Remove(c);
-                gameTable.faceUp[row].Add(c);
-            }
+            if (gameTable.faceDown[row].Count == 0) return;
+            Card c = gameTable.faceDown[row][0];
+            gameTable.faceDown[row].Remove(c);
+            gameTable.faceUp[row].Add(c);
         }
 
         // Moves a card from one column to another
@@ -48,19 +46,16 @@ namespace Solitaire
                         //if (c.getValue() + 1 == faceUp[destination][faceUp[destination].Count - 1].getValue())
                         gameTable.faceUp[destination].Add(c);
                     }
-                    if (previous != gameTable.faceUp[destination].Count)
-                    {
-                        gameTable.faceUp[source].Clear();
-                        StackFlip(source);
-                    }
+
+                    if (previous == gameTable.faceUp[destination].Count) return;
+                    gameTable.faceUp[source].Clear();
+                    StackFlip(source);
                 }
                 else
                 {
-                    if (gameTable.faceUpDeck.Count != 0)
-                    {
-                        Card c = gameTable.faceUpDeck.Pop();
-                        gameTable.faceUp[destination].Add(c);
-                    }
+                    if (gameTable.faceUpDeck.Count == 0) return;
+                    Card c = gameTable.faceUpDeck.Pop();
+                    gameTable.faceUp[destination].Add(c);
                 }
             }
             // King card can move to an empty column
@@ -69,32 +64,27 @@ namespace Solitaire
                 if (source > 0)
                 {
                     int previous = gameTable.faceUp[destination].Count;
-                    if (gameTable.faceUp[source][0].getType() == "King")
+                    if (gameTable.faceUp[source][0].getType() != "King") return;
+                    foreach (Card card in gameTable.faceUp[source].ToList())
                     {
-                        foreach (Card card in gameTable.faceUp[source].ToList())
-                        {
-                            gameTable.faceUp[destination].Add(card);
-                        }
-                        if (previous != gameTable.faceUp[destination].Count)
-                        {
-                            gameTable.faceUp[source].Clear();
-                            StackFlip(source);
-                        }
+                        gameTable.faceUp[destination].Add(card);
                     }
+
+                    if (previous == gameTable.faceUp[destination].Count) return;
+                    gameTable.faceUp[source].Clear();
+                    StackFlip(source);
                 }
                 else
                 {
-                    if (gameTable.faceUpDeck.Count != 0)
+                    if (gameTable.faceUpDeck.Count == 0) return;
+                    Card card = gameTable.faceUpDeck.Pop();
+                    if (card.getType() == "King")
                     {
-                        Card card = gameTable.faceUpDeck.Pop();
-                        if (card.getType() == "King")
-                        {
-                            gameTable.faceUp[destination].Add(card);
-                        }
-                        else
-                        {
-                            gameTable.faceUpDeck.Push(card);
-                        }
+                        gameTable.faceUp[destination].Add(card);
+                    }
+                    else
+                    {
+                        gameTable.faceUpDeck.Push(card);
                     }
                 }
             }
@@ -104,35 +94,9 @@ namespace Solitaire
         {
             if (source > 0)
             {
-                if (gameTable.faceUp[source].Count != 0)
+                if (gameTable.faceUp[source].Count == 0) return;
+                foreach (Card c in gameTable.faceUp[source].ToList())
                 {
-                    foreach (Card c in gameTable.faceUp[source].ToList())
-                    {
-                        if (c.getSuit() == "Hearts")
-                        {
-                            gameTable.heartAce.Add(c);
-                        }
-                        else if (c.getSuit() == "Diamonds")
-                        {
-                            gameTable.diamondAce.Add(c);
-                        }
-                        else if (c.getSuit() == "Clubs")
-                        {
-                            gameTable.clubAce.Add(c);
-                        }
-                        else if (c.getSuit() == "Spades")
-                        {
-                            gameTable.spadeAce.Add(c);
-                        }
-                    }
-                    gameTable.faceUp[source].Clear();
-                }
-            }
-            else
-            {
-                if (gameTable.faceUpDeck.Count != 0)
-                {
-                    Card c = gameTable.faceUpDeck.Pop();
                     if (c.getSuit() == "Hearts")
                     {
                         gameTable.heartAce.Add(c);
@@ -149,6 +113,28 @@ namespace Solitaire
                     {
                         gameTable.spadeAce.Add(c);
                     }
+                }
+                gameTable.faceUp[source].Clear();
+            }
+            else
+            {
+                if (gameTable.faceUpDeck.Count == 0) return;
+                Card c = gameTable.faceUpDeck.Pop();
+                if (c.getSuit() == "Hearts")
+                {
+                    gameTable.heartAce.Add(c);
+                }
+                else if (c.getSuit() == "Diamonds")
+                {
+                    gameTable.diamondAce.Add(c);
+                }
+                else if (c.getSuit() == "Clubs")
+                {
+                    gameTable.clubAce.Add(c);
+                }
+                else if (c.getSuit() == "Spades")
+                {
+                    gameTable.spadeAce.Add(c);
                 }
             }
         }
