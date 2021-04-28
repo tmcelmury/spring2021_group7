@@ -20,6 +20,8 @@ namespace Solitaire
         }
         public string getSuit() { return suit; }
 
+        public string getType() { return type; }
+
         override
         public String ToString()
         {
@@ -29,6 +31,11 @@ namespace Solitaire
         public int getValue()
         {
             return this.value;
+        }
+
+        public string getDisplay()
+        {
+            return this.type + this.suit[0] + " " ;
         }
 
 
