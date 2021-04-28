@@ -8,10 +8,10 @@ namespace Solitaire
         {
             Console.WriteLine("SOLITAIRE!\n");
 
-            GameTable gameTable = new GameTable();
+            SolitaireController control = new SolitaireController();
             while (true)
             {
-                gameTable.Display();
+                control.Display();
                 Console.WriteLine("\nMove(m) or flip(f) or ace(a)");
                 string input = Console.ReadLine();
                 if (input == "f")
@@ -20,11 +20,11 @@ namespace Solitaire
                     int flipRow = Convert.ToInt32(Console.ReadLine());
                     if (flipRow == 0)
                     {
-                        gameTable.DeckFlip();
+                        control.DeckFlip();
                     }
                     else
                     {
-                        gameTable.StackFlip(flipRow);
+                        control.StackFlip(flipRow);
                     }
                 }else if (input == "m")
                 {
@@ -32,13 +32,13 @@ namespace Solitaire
                     int source = Convert.ToInt32(Console.ReadLine());
                     Console.WriteLine("\nPick destination row from 1-7");
                     int destination = Convert.ToInt32(Console.ReadLine());
-                    gameTable.MoveCard(source, destination);
+                    control.MoveCard(source, destination);
                 }
                 else if (input == "a")
                 {
                     Console.WriteLine("\nPick source row from 0-7");
                     int source = Convert.ToInt32(Console.ReadLine());
-                    gameTable.AceStacks(source);
+                    control.AceStacks(source);
                 }
                 else
                 {
