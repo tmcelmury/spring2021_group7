@@ -12,6 +12,8 @@ namespace CardGame
 {
     public partial class Menu : Form
     {
+        public Form Solitaire_load { get; private set; }
+
         public Menu()
         {
             InitializeComponent();
@@ -20,8 +22,9 @@ namespace CardGame
         private void solitaire_game_Click(object sender, EventArgs e)
         {
             Solitaire solitaire = new();
-            solitaire.InitializeComponent();
-            solitaire.Show();
+            Application.Run(Solitaire_load);
+            //solitaire.InitializeComponent();
+            //solitaire.Show();
             Hide(); 
         }
 
@@ -32,6 +35,11 @@ namespace CardGame
             blackjackStart.Show();
             Hide();
         }
-        
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
