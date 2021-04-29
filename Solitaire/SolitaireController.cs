@@ -95,46 +95,47 @@ namespace Solitaire
             if (source > 0)
             {
                 if (gameTable.faceUp[source].Count == 0) return;
-                foreach (Card c in gameTable.faceUp[source].ToList())
+                Card c = gameTable.faceUp[source][^1];
+                if (c.getSuit() == "Hearts" && gameTable.heartAce.Count + 1 == c.getRank())
                 {
-                    if (c.getSuit() == "Hearts")
-                    {
-                        gameTable.heartAce.Add(c);
-                    }
-                    else if (c.getSuit() == "Diamonds")
-                    {
-                        gameTable.diamondAce.Add(c);
-                    }
-                    else if (c.getSuit() == "Clubs")
-                    {
-                        gameTable.clubAce.Add(c);
-                    }
-                    else if (c.getSuit() == "Spades")
-                    {
-                        gameTable.spadeAce.Add(c);
-                    }
+                    gameTable.heartAce.Add(c);
+                    gameTable.faceUp[source].Remove(c);
                 }
-                gameTable.faceUp[source].Clear();
+                else if (c.getSuit() == "Diamonds" && gameTable.diamondAce.Count + 1 == c.getRank())
+                {
+                    gameTable.diamondAce.Add(c);
+                    gameTable.faceUp[source].Remove(c);
+                }
+                else if (c.getSuit() == "Clubs" && gameTable.clubAce.Count + 1 == c.getRank())
+                {
+                    gameTable.clubAce.Add(c);
+                    gameTable.faceUp[source].Remove(c);
+                }
+                else if (c.getSuit() == "Spades" && gameTable.spadeAce.Count + 1 == c.getRank())
+                {
+                    gameTable.spadeAce.Add(c);
+                    gameTable.faceUp[source].Remove(c);
+                }
             }
             else
             {
                 if (gameTable.faceUpDeck.Count == 0) return;
-                Card c = gameTable.faceUpDeck.Pop();
-                if (c.getSuit() == "Hearts")
+                Card c = gameTable.faceUpDeck.Peek();
+                if (c.getSuit() == "Hearts" && gameTable.heartAce.Count + 1 == c.getRank())
                 {
-                    gameTable.heartAce.Add(c);
+                    gameTable.heartAce.Add(gameTable.faceUpDeck.Pop());
                 }
-                else if (c.getSuit() == "Diamonds")
+                else if (c.getSuit() == "Diamonds" && gameTable.diamondAce.Count + 1 == c.getRank())
                 {
-                    gameTable.diamondAce.Add(c);
+                    gameTable.diamondAce.Add(gameTable.faceUpDeck.Pop());
                 }
-                else if (c.getSuit() == "Clubs")
+                else if (c.getSuit() == "Clubs" && gameTable.clubAce.Count + 1 == c.getRank())
                 {
-                    gameTable.clubAce.Add(c);
+                    gameTable.clubAce.Add(gameTable.faceUpDeck.Pop());
                 }
-                else if (c.getSuit() == "Spades")
+                else if (c.getSuit() == "Spades" && gameTable.spadeAce.Count + 1 == c.getRank())
                 {
-                    gameTable.spadeAce.Add(c);
+                    gameTable.spadeAce.Add(gameTable.faceUpDeck.Pop());
                 }
             }
         }
