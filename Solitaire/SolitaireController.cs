@@ -18,6 +18,14 @@ namespace Solitaire
                 Card c = gameTable.deck.Pop();
                 gameTable.faceUpDeck.Push(c);
             }
+            else if (gameTable.faceUpDeck.Count != 0)
+            {
+                foreach (Card c in gameTable.faceUpDeck)
+                {
+                    gameTable.deck.Push(c);
+                }
+                gameTable.faceUpDeck.Clear();
+            }
             else
             {
                 Console.WriteLine("Deck is empty");
