@@ -50,7 +50,7 @@ namespace CardGame
             // solitaire_game
             // 
             this.solitaire_game.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.solitaire_game.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.solitaire_game.Font = new System.Drawing.Font("Unispace", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.solitaire_game.Location = new System.Drawing.Point(516, 266);
             this.solitaire_game.Margin = new System.Windows.Forms.Padding(2);
             this.solitaire_game.Name = "solitaire_game";
@@ -90,7 +90,7 @@ namespace CardGame
             // 
             // Menu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1223, 587);
@@ -98,11 +98,10 @@ namespace CardGame
             this.Controls.Add(this.title);
             this.Controls.Add(this.solitaire_game);
             this.Controls.Add(this.blackjack_starter);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("Unispace", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.HelpButton = true;
             this.Name = "Menu";
             this.Text = "CardGame";
-            this.Load += new System.EventHandler(this.Menu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
