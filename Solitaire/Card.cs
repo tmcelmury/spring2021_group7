@@ -12,12 +12,21 @@ namespace Solitaire
         private int value;
         private string type;
         private int rank;
+        private string color;
 
         public Card(string suit, string type, int value)
         {
             this.value = value;
             this.suit = suit;
             this.type = type;
+            if (suit == "Clubs" || suit == "Spades")
+            {
+                this.color = "Black";
+            }
+            else
+            {
+                this.color = "Red";
+            }
             if (value < 10)
             {
                 rank = value;
