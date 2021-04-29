@@ -1,7 +1,6 @@
 ﻿using System;
-using BlackJack;
 
-namespace BlackJack
+namespace CardGame
 {
     public class Dealer : Player
     {

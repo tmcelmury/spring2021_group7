@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using BlackJack;
+using CardGame;
 public class Deck
 {
     private Stack<Card> deck = new Stack<Card>();
