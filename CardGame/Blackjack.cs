@@ -12,7 +12,7 @@ namespace CardGame
 {
     public partial class Blackjack : Form
     {
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             this.SuspendLayout();
             // 
