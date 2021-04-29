@@ -11,19 +11,35 @@ namespace Solitaire
         private string suit;
         private int value;
         private string type;
+        private int rank;
 
         public Card(string suit, string type, int value)
         {
             this.value = value;
             this.suit = suit;
             this.type = type;
+            if (value < 10)
+            {
+                rank = value;
+            }
+            else
+                rank = type switch
+                {
+                    "10" => 10,
+                    "Jack" => 11,
+                    "Queen" => 12,
+                    "King" => 13,
+                    _ => rank
+                };
         }
         public string getSuit() { return suit; }
 
         public string getType() { return type; }
 
+        public int getRank() { return rank; }
+
         override
-        public String ToString()
+        public string ToString()
         {
             return this.type + " of " + this.suit;
         }
