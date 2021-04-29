@@ -10,5 +10,6 @@ namespace CardGame
     {
         private System.Windows.Forms.ComboBox playerCount;
         private System.Windows.Forms.Label playerQuestion;
+        private System.Windows.Forms.Button startBJ;
     }
 }

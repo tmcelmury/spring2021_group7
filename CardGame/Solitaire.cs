@@ -20,7 +20,11 @@ namespace CardGame
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(92)))), ((int)(((byte)(17)))));
             this.ClientSize = new System.Drawing.Size(963, 548);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "Solitaire";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
+            this.Text = "Solitaire";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }
