@@ -27,6 +27,7 @@ namespace Solitaire
         // Flips a card from face down to up
         public void StackFlip(int row)
         {
+            if (gameTable.faceUp[row].Count != 0) return;
             if (gameTable.faceDown[row].Count == 0) return;
             Card c = gameTable.faceDown[row][0];
             gameTable.faceDown[row].Remove(c);
@@ -34,28 +35,36 @@ namespace Solitaire
         }
 
         // Moves a card from one column to another
-        public void MoveCard(int source, int destination)
+        public void MoveCard(int source, int index, int destination)
         {
-            if (gameTable.faceUp[source].Count != 0 && (gameTable.faceDown[destination].Count + gameTable.faceUp[destination].Count != 0))
+            if (source > 7 || destination > 7 || destination == 0) return;
+            if (source > 0 && index >= gameTable.faceUp[source].Count) return;
+            if ((gameTable.faceUp[source].Count != 0 && (gameTable.faceUp[destination].Count != 0)) || (source == 0 && gameTable.faceUpDeck.Count != 0 && (gameTable.faceUp[destination].Count != 0)))
             {
                 if (source > 0)
                 {
-                    int previous = gameTable.faceUp[destination].Count;
-                    foreach (Card c in gameTable.faceUp[source].ToList())
+                    Card c = gameTable.faceUp[source][index];
+                    Card lastInDest = gameTable.faceUp[destination][^1];
+                    if (c.getColor() == lastInDest.getColor()) return;
+                    if (c.getRank() != lastInDest.getRank() - 1) return;
+                    int initialCount = gameTable.faceUp[source].Count;
+                    for (int i = index; i < initialCount; i++)
                     {
-                        //if (c.getValue() + 1 == faceUp[destination][faceUp[destination].Count - 1].getValue())
-                        gameTable.faceUp[destination].Add(c);
+                        Card newCard = gameTable.faceUp[source][index];
+                        gameTable.faceUp[destination].Add(newCard);
+                        gameTable.faceUp[source].Remove(newCard);
                     }
-
-                    if (previous == gameTable.faceUp[destination].Count) return;
-                    gameTable.faceUp[source].Clear();
+                    if (index != 0 || gameTable.faceDown[source].Count == 0) return;
                     StackFlip(source);
                 }
                 else
                 {
                     if (gameTable.faceUpDeck.Count == 0) return;
-                    Card c = gameTable.faceUpDeck.Pop();
-                    gameTable.faceUp[destination].Add(c);
+                    Card c = gameTable.faceUpDeck.Peek();
+                    Card lastInDest = gameTable.faceUp[destination][^1];
+                    if (c.getColor() == lastInDest.getColor()) return;
+                    if (c.getRank() != lastInDest.getRank() - 1) return;
+                    gameTable.faceUp[destination].Add(gameTable.faceUpDeck.Pop());
                 }
             }
             // King card can move to an empty column
@@ -116,6 +125,9 @@ namespace Solitaire
                     gameTable.spadeAce.Add(c);
                     gameTable.faceUp[source].Remove(c);
                 }
+
+                if (gameTable.faceUp[source].Count != 0 || gameTable.faceDown[source].Count == 0) return;
+                StackFlip(source);
             }
             else
             {
@@ -138,6 +150,11 @@ namespace Solitaire
                     gameTable.spadeAce.Add(gameTable.faceUpDeck.Pop());
                 }
             }
+        }
+
+        public int GetCountFromColumn(int source)
+        {
+            return gameTable.faceUp[source].Count;
         }
 
         // Displays for testing

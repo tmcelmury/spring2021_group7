@@ -47,6 +47,8 @@ namespace Solitaire
 
         public int getRank() { return rank; }
 
+        public string getColor() { return color;}
+
         override
         public string ToString()
         {

@@ -30,9 +30,17 @@ namespace Solitaire
                 {
                     Console.WriteLine("\nPick source row from 0-7");
                     int source = Convert.ToInt32(Console.ReadLine());
+                    int count = control.GetCountFromColumn(source);
+                    int index = 0;
+                    if (count > 1 && source != 0)
+                    {
+                        Console.WriteLine("\nPick which card to grab from 0-" + (count - 1));
+                        index = Convert.ToInt32(Console.ReadLine());
+                    }
+
                     Console.WriteLine("\nPick destination row from 1-7");
                     int destination = Convert.ToInt32(Console.ReadLine());
-                    control.MoveCard(source, destination);
+                    control.MoveCard(source, index, destination);
                 }
                 else if (input == "a")
                 {
