@@ -8,84 +8,78 @@ namespace CardGame
 {
     public class Card
     {
-        public Suit suit { get; set; }    // suit
-        public int value { get; set; }  // blackjack value
-        public Face rank { get; set; }   // face value
-        public Color color { get; set; }    // keeps track of color
 
-        // card constructor
-        public Card(Suit suit, Face rank)
+        private string suit;
+        private int value;
+        private string type;
+        private int rank;
+        private string color;
+
+        public Card(string suit, string type, int value)
         {
+            this.value = value;
             this.suit = suit;
-            this.rank = rank;
-
-            if (rank == Face.jack || rank == Face.queen || rank == Face.king)
+            this.type = type;
+            if (suit == "Clubs" || suit == "Spades")
             {
-                value = 10;
+                this.color = "Black";
             }
             else
             {
-                switch (rank)
-                {
-                    case Face.ace:
-                        value = 1;
-                        break;
-                    case Face.two:
-                        value = 2;
-                        break;
-                    case Face.three:
-                        value = 3;
-                        break;
-                    case Face.four:
-                        value = 4;
-                        break;
-                    case Face.five:
-                        value = 5;
-                        break;
-                    case Face.six:
-                        value = 6;
-                        break;
-                    case Face.seven:
-                        value = 7;
-                        break;
-                    case Face.eight:
-                        value = 8;
-                        break;
-                    case Face.nine:
-                        value = 9;
-                        break;
-                    case Face.ten:
-                        value = 10;
-                        break;
-                }
+                this.color = "Red";
             }
-
-            if (this.suit.Equals(Suit.clubs) || this.suit.Equals(Suit.spades)) 
+            if (value < 10)
             {
-                color = Color.black; 
+                rank = value;
             }
-            else { color = Color.red; }
+            else
+                rank = type switch
+                {
+                    "10" => 10,
+                    "Jack" => 11,
+                    "Queen" => 12,
+                    "King" => 13,
+                    _ => rank
+                };
         }
+        public string getSuit() { return suit; }
 
+        public string getType() { return type; }
 
-        /*
-        public Suit getSuit() { return this.suit; }
+        public int getRank() { return rank; }
+
+        public string getColor() { return color; }
 
         override
-        public String ToString()    // used to print card name
+        public string ToString()
         {
-            return this.rank + " of " + this.suit;
+            return this.type + " of " + this.suit;
         }
 
-        public Face getRank() { return ; }
-
-        public int getValue() { return this.value; }
-        public Color getColor()
+        public int getValue()
         {
-            if(this.suit.Equals(Suit.clubs) || this.suit.Equals(Suit.spades)) { return Color.black; }
-            else { return Color.red; }
-        } */
-        
+            return this.value;
+        }
+
+        public string getDisplay()
+        {
+            return this.type + this.suit[0] + " ";
+        }
+
+        public string getPngDisplay()
+        {
+            if (this.type == "10")
+            {
+                return "10" + this.suit[0];
+            }
+            else
+            {
+                return this.type[0].ToString() + this.suit[0];
+            }
+        }
+
+
+
     }
 
 }

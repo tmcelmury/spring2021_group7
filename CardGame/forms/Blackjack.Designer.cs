@@ -8,5 +8,6 @@ namespace CardGame
 {
     partial class Blackjack
     {
+        private System.Windows.Forms.Button DealButton;
     }
 }
