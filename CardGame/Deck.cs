@@ -7,7 +7,7 @@ public class Deck
 {
     private Stack<Card> deck = new Stack<Card>();
 
-    //Initialize Deck
+    //Initialize Deck by generating it and then shuffling
     public Deck()
     {
         InitializeDeck();
@@ -21,13 +21,16 @@ public class Deck
         this.deck = new Stack<Card>(shuffledCards);
     }
 
-    //the switch case statements are to make the console printing look nicer
+    // this method generates all the cards found in a 52 card deck
     public void InitializeDeck()
     {
+        // these assignments are necessary to use the following switch statements
         Suit suit = Suit.clubs;
         Face rank = Face.king;
+
+        // begin generating cards, going through each rank in each suit
         deck.Clear();
-        for (int i = 1; i <= 4; i++)
+        for (int i = 1; i <= 4; i++)    // 1-4 for each suit
         {
             switch (i)
             {
@@ -45,7 +48,7 @@ public class Deck
                     break;
             }
 
-            for (int j = 1; j <= 13; j++)
+            for (int j = 1; j <= 13; j++)   // 1-13 for each rank/face 
             {
                 switch (j)
                 {
@@ -89,12 +92,14 @@ public class Deck
                         rank = Face.king;
                         break;
                 }
+                // instantiate new card and use constructor to create it
                 Card card;
                 card = new Card(suit, rank);
-                
+                //  add card to deck
                 deck.Push(card);
             }
         }
+        //  shuffle the deck
         this.Shuffle();
     }
 

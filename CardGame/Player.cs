@@ -36,8 +36,7 @@ namespace CardGame
             bool hasAce = false;
             foreach (Card card in this.hand)
             {
-                int cardValue = card.getValue();
-
+                int cardValue = card.value;
 
                 //if their is a card with value 1 (ace) in hand
                 //and the player doesn't already have an ace
@@ -60,16 +59,6 @@ namespace CardGame
             return points;
         }
 
-        public int getId()
-        {
-            return this.id;
-        }
-
-        public void setId(int id)
-        {
-            this.id = id;
-        }
-
         public void AddCardToHand(Card card)
         {
             this.hand.Add(card);
@@ -78,6 +67,16 @@ namespace CardGame
         public List<Card> getHand()
         {
             return this.hand;
+        }
+
+        public int getId()
+        {
+            return this.id;
+        }
+
+        public void setId(int id)
+        {
+            this.id = id;
         }
     }
 }

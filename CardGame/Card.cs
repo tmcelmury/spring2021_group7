@@ -9,39 +9,60 @@ namespace CardGame
     public class Card
     {
 
-        private string suit;
-        private int value;
-        private string type;
-        private int rank;
-        private string color;
+        public Suit suit { get; set; }
+        public int value { get; set; }
+        public Face rank { get; set; }
+        public Color color { get; set; }
 
-        public Card(string suit, string type, int value)
+        public Card(Suit suit, Face rank)
         {
-            this.value = value;
             this.suit = suit;
-            this.type = type;
-            if (suit == "Clubs" || suit == "Spades")
+            this.rank = rank;
+            if (this.suit == Suit.clubs || this.suit == Suit.spades)
             {
-                this.color = "Black";
+                color = Color.black;
             }
+            else { color = Color.red; }
+            
+            if (rank == Face.jack || rank == Face.queen || rank == Face.king) { value = 10; }
             else
             {
-                this.color = "Red";
-            }
-            if (value < 10)
-            {
-                rank = value;
-            }
-            else
-                rank = type switch
+                switch (rank)
                 {
-                    "10" => 10,
-                    "Jack" => 11,
-                    "Queen" => 12,
-                    "King" => 13,
-                    _ => rank
-                };
+                    case Face.ace:
+                        value = 1;
+                        break;
+                    case Face.two:
+                        value = 2;
+                        break;
+                    case Face.three:
+                        value = 3;
+                        break;
+                    case Face.four:
+                        value = 4;
+                        break;
+                    case Face.five:
+                        value = 5;
+                        break;
+                    case Face.six:
+                        value = 6;
+                        break;
+                    case Face.seven:
+                        value = 7;
+                        break;
+                    case Face.eight:
+                        value = 8;
+                        break;
+                    case Face.nine:
+                        value = 9;
+                        break;
+                    case Face.ten:
+                        value = 10;
+                        break;
+                }
+            }  
         }
+        /*
         public string getSuit() { return suit; }
 
         public string getType() { return type; }
@@ -76,7 +97,7 @@ namespace CardGame
             {
                 return this.type[0].ToString() + this.suit[0];
             }
-        }
+        } */
 
 
 
