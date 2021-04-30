@@ -33,7 +33,7 @@ namespace CardGame
             "6"});
             this.playerCount.Location = new System.Drawing.Point(397, 231);
             this.playerCount.Name = "playerCount";
-            this.playerCount.Size = new System.Drawing.Size(151, 28);
+            this.playerCount.Size = new System.Drawing.Size(151, 23);
             this.playerCount.TabIndex = 0;
             // 
             // playerQuestion
@@ -44,7 +44,7 @@ namespace CardGame
             this.playerQuestion.ForeColor = System.Drawing.Color.White;
             this.playerQuestion.Location = new System.Drawing.Point(319, 164);
             this.playerQuestion.Name = "playerQuestion";
-            this.playerQuestion.Size = new System.Drawing.Size(308, 31);
+            this.playerQuestion.Size = new System.Drawing.Size(256, 25);
             this.playerQuestion.TabIndex = 1;
             this.playerQuestion.Text = "How many players are there?";
             // 
@@ -57,6 +57,7 @@ namespace CardGame
             this.startBJ.TabIndex = 2;
             this.startBJ.Text = "Begin!";
             this.startBJ.UseVisualStyleBackColor = true;
+            this.startBJ.Click += new System.EventHandler(this.startBJ_Click);
             // 
             // BlackjackStart
             // 
@@ -74,5 +75,12 @@ namespace CardGame
 
         }
 
+        private void startBJ_Click(object sender, EventArgs e)
+        {
+            Blackjack blackjack = new();
+            blackjack.InitializeComponent();
+            blackjack.Show();
+            Hide();
+        }
     }
 }
