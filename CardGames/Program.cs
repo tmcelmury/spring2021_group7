@@ -16,11 +16,19 @@ namespace CardGames
             //choose blackjack or solitaire based on UI button click
 
             //if blackjack
-            IGame game = new BlackjackController();
-
-            //if solitaire
-            game = new SolitaireController();
-
+            Console.WriteLine("Solitaire(0) or Blackjack(1)?");
+            string result = Console.ReadLine();
+            if(result == "0")
+            {
+                game = new SolitaireController();
+            } else if(result == "1")
+            {
+                game = new BlackjackController();
+            } else
+            {
+                Console.WriteLine("Invalid Input!");
+                return;
+            }
             Play(game);
         }
 
