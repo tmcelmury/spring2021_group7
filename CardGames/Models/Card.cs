@@ -4,8 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Solitaire
+namespace CardGames
 {
+    /**
+     * Created by Group 7 (Spring 2021)
+     * 
+     * This class models a card object from a standard 52-card deck.
+     */
     public class Card
     {
         private string suit;
@@ -41,32 +46,20 @@ namespace Solitaire
                     _ => rank
                 };
         }
-        public string getSuit() { return suit; }
+        public string GetSuit() { return suit; }
 
-        public string getType() { return type; }
+        public new string GetType() { return type; }
 
-        public int getRank() { return rank; }
+        public int GetRank() { return rank; }
 
-        public string getColor() { return color;}
+        public string GetColor() { return color; }
+
+        public int GetValue() { return this.value; }
+
+        public string GetDisplay() { return this.type + this.suit[0] + " " ; }
 
         override
-        public string ToString()
-        {
-            return this.type + " of " + this.suit;
-        }
-
-        public int getValue()
-        {
-            return this.value;
-        }
-
-        public string getDisplay()
-        {
-            return this.type + this.suit[0] + " " ;
-        }
-
-
-
+        public string ToString() { return this.type + " of " + this.suit; }
     }
 
 }

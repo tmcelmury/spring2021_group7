@@ -3,27 +3,37 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Solitaire
+namespace CardGames
 {
+    /**
+     * Created by Group 7 (Spring 2021)
+     * 
+     * This class models a Deck object that is composed of a List of Cards.
+     */
     public class Deck
     {
-        private Stack<Card> deck = new Stack<Card>();
+        //treat the deck as a Deque structure
+        private List<Card> deck = new List<Card>();
 
-        //Initialize Deck
         public Deck()
         {
             InitializeDeck();
         }
 
+        /**
+         * This Shuffle method arranges the deck of cards in a random order.
+         */
         public void Shuffle()
         {
             Random random = new Random();
             Card[] cards = this.deck.ToArray();
             Card[] shuffledCards = cards.OrderBy(x => random.Next()).ToArray();
-            this.deck = new Stack<Card>(shuffledCards);
+            this.deck = new List<Card>(shuffledCards);
         }
 
-        //the switch case statements are to make the console printing look nicer
+        /**
+         * This InitalizeDeck method populates the deck with the standard 52 cards.
+         */
         public void InitializeDeck()
         {
             deck.Clear();
@@ -52,16 +62,16 @@ namespace Solitaire
                     switch (type)
                     {
                         case "1":
-                            type = "Ace";
+                            type = "A";
                             break;
                         case "11":
-                            type = "Jack";
+                            type = "J";
                             break;
                         case "12":
-                            type = "Queen";
+                            type = "Q";
                             break;
                         case "13":
-                            type = "King";
+                            type = "K";
                             break;
                     }
                     Card card;
@@ -73,20 +83,25 @@ namespace Solitaire
                     {
                         card = new Card(suit, type, j);
                     }
-                    deck.Push(card);
+                    deck.Add(card);
                 }
             }
             this.Shuffle();
         }
 
-        public Stack<Card> getDeck()
+        public List<Card> GetDeck()
         {
             return this.deck;
         }
 
+        /**
+         * This Draw method returns the card on the "top" of the deck.
+         */
         public Card Draw()
         {
-            return this.getDeck().Pop();
+            Card topOfDeck = this.deck[this.GetDeck().Count];
+            this.deck.RemoveAt(deck.Count());
+            return topOfDeck;
         }
     }
 }
