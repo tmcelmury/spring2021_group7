@@ -93,7 +93,7 @@ namespace CardGames
                     Console.WriteLine("Rank good");
                     Card drawnCard = gameTable.onDeck;
                     gameTable.deck.GetDeck().Remove(drawnCard);
-                    gameTable.onDeck = null;
+                    DeckFlip();
                     gameTable.faceUp[destination].Add(drawnCard);
                 }
             }
@@ -121,7 +121,7 @@ namespace CardGames
                     {
                         gameTable.faceUp[destination].Add(card);
                         gameTable.deck.GetDeck().Remove(card);
-                        gameTable.onDeck = null;
+                        DeckFlip();
                     }
                 }
             }
@@ -171,28 +171,28 @@ namespace CardGames
                     drawnCard = gameTable.onDeck;
                     gameTable.heartAce.Add(drawnCard);
                     gameTable.deck.GetDeck().Remove(drawnCard);
-                    gameTable.onDeck = null;
+                    DeckFlip();
                 }
                 else if (c.GetSuit() == "Diamonds" && gameTable.diamondAce.Count + 1 == c.GetRank())
                 {
                     drawnCard = gameTable.onDeck;
                     gameTable.diamondAce.Add(drawnCard);
                     gameTable.deck.GetDeck().Remove(drawnCard);
-                    gameTable.onDeck = null;
+                    DeckFlip();
                 }
                 else if (c.GetSuit() == "Clubs" && gameTable.clubAce.Count + 1 == c.GetRank())
                 {
                     drawnCard = gameTable.onDeck;
                     gameTable.clubAce.Add(drawnCard);
                     gameTable.deck.GetDeck().Remove(drawnCard);
-                    gameTable.onDeck = null;
+                    DeckFlip();
                 }
                 else if (c.GetSuit() == "Spades" && gameTable.spadeAce.Count + 1 == c.GetRank())
                 {
                     drawnCard = gameTable.onDeck;
                     gameTable.spadeAce.Add(drawnCard);
                     gameTable.deck.GetDeck().Remove(drawnCard);
-                    gameTable.onDeck = null;
+                    DeckFlip();
                 }
             }
             Display();
