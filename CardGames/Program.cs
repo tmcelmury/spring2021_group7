@@ -5,7 +5,7 @@ namespace CardGames
     /**
      * Created by Group 7 (Spring 2021)
      * 
-     * This is a driver for Solitaire.
+     * This is a driver for our Card Games.
      */
     class Program
     {
@@ -13,9 +13,6 @@ namespace CardGames
 
         static void Main(string[] args)
         {
-            //choose blackjack or solitaire based on UI button click
-
-            //if blackjack
             Console.WriteLine("Solitaire(0) or Blackjack(1)?");
             string result = Console.ReadLine();
             if(result == "0")
