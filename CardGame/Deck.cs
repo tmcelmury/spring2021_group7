@@ -5,7 +5,7 @@ using System.Linq;
 using CardGame;
 public class Deck
 {
-    private Stack<Card> deck = new Stack<Card>();
+    private Stack<Card> deck = new();
 
     //Initialize Deck by generating it and then shuffling
     public Deck()
@@ -15,7 +15,7 @@ public class Deck
 
     public void Shuffle()
     {
-        Random random = new Random();
+        Random random = new();
         Card[] cards = this.deck.ToArray();
         Card[] shuffledCards = cards.OrderBy(x => random.Next()).ToArray();
         this.deck = new Stack<Card>(shuffledCards);

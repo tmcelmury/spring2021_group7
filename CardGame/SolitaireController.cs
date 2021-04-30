@@ -8,7 +8,7 @@ namespace CardGame
 {
     public class SolitaireController
     {
-        GameTable gameTable = new GameTable();
+        GameTable gameTable = new();
 
         // Flips the deck
         public void DeckFlip()

@@ -9,16 +9,16 @@ namespace CardGame
 {
     public class GameTable
     {
-        public Stack<Card> deck = new Stack<Card>();
-        public Stack<Card> faceUpDeck = new Stack<Card>();
+        public Stack<Card> deck = new();
+        public Stack<Card> faceUpDeck = new();
 
-        public List<Card> heartAce = new List<Card>();
-        public List<Card> clubAce = new List<Card>();
-        public List<Card> spadeAce = new List<Card>();
-        public List<Card> diamondAce = new List<Card>();
+        public List<Card> heartAce = new();
+        public List<Card> clubAce = new();
+        public List<Card> spadeAce = new();
+        public List<Card> diamondAce = new();
 
-        public List<List<Card>> faceUp = new List<List<Card>>();
-        public List<List<Card>> faceDown = new List<List<Card>>();
+        public List<List<Card>> faceUp = new();
+        public List<List<Card>> faceDown = new();
 
 
         public GameTable()

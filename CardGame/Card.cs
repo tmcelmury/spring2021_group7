@@ -8,7 +8,6 @@ namespace CardGame
 {
     public class Card
     {
-
         public Suit suit { get; set; }
         public int value { get; set; }
         public Face rank { get; set; }
