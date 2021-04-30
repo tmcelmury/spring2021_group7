@@ -60,7 +60,7 @@ namespace CardGame
             //this is the case where everybody busted, the dealer is favored
             if (!busted.Any(o => o != busted[0]) && busted[0])
             {
-                Console.WriteLine("DEALER WINS!");
+                //Console.WriteLine("DEALER WINS!");
                 finalWinners.Add(0);
                 return finalWinners;
             }
@@ -72,7 +72,7 @@ namespace CardGame
                 //if the dealer is one of the players with blackjack, dealer wins
                 if (blackjacks.Contains(0))
                 {
-                    Console.WriteLine("DEALER WINS!");
+                    //Console.WriteLine("DEALER WINS!");
                     finalWinners.Add(0);
                     return finalWinners;
                 }
@@ -81,7 +81,7 @@ namespace CardGame
                     //if dealer doesn't have blackjack, those who do, have won
                     foreach (int id in blackjacks)
                     {
-                        Console.WriteLine("PLAYER {0} WINS!", id);
+                        //Console.WriteLine("PLAYER {0} WINS!", id);
                         finalWinners.Add(id);
                     }
                     return finalWinners;
@@ -97,7 +97,7 @@ namespace CardGame
                 //if the dealer is one of the players with the best score, dealer wins
                 if (winners.Contains(0))
                 {
-                    Console.WriteLine("DEALER WINS!");
+                    //Console.WriteLine("DEALER WINS!");
                     finalWinners.Add(0);
                     return finalWinners;
                 }
@@ -105,7 +105,7 @@ namespace CardGame
                 {
                     foreach (var winner in winners)
                     {
-                        Console.WriteLine("PLAYER {0} WINS!", winner);
+                        //Console.WriteLine("PLAYER {0} WINS!", winner);
                         finalWinners.Add(winner);
                     }
                     return finalWinners;

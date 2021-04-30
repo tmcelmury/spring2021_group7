@@ -28,7 +28,7 @@ namespace CardGame
             }
             else
             {
-                Console.WriteLine("Deck is empty");
+                //Console.WriteLine("Deck is empty");
             }
         }
 
@@ -53,8 +53,12 @@ namespace CardGame
                 {
                     Card c = gameTable.faceUp[source][index];
                     Card lastInDest = gameTable.faceUp[destination][^1];
-                    if (c.getColor() == lastInDest.getColor()) return;
-                    if (c.getRank() != lastInDest.getRank() - 1) return;
+
+
+                    if (c.color == lastInDest.color) return;// method names fixed
+                    if (c.rank != lastInDest.rank - 1) return;
+                    
+                    
                     int initialCount = gameTable.faceUp[source].Count;
                     for (int i = index; i < initialCount; i++)
                     {
@@ -70,8 +74,8 @@ namespace CardGame
                     if (gameTable.faceUpDeck.Count == 0) return;
                     Card c = gameTable.faceUpDeck.Peek();
                     Card lastInDest = gameTable.faceUp[destination][^1];
-                    if (c.getColor() == lastInDest.getColor()) return;
-                    if (c.getRank() != lastInDest.getRank() - 1) return;
+                    if (c.color == lastInDest.color) return;
+                    if (c.rank != lastInDest.rank - 1) return;
                     gameTable.faceUp[destination].Add(gameTable.faceUpDeck.Pop());
                 }
             }
@@ -81,7 +85,7 @@ namespace CardGame
                 if (source > 0)
                 {
                     int previous = gameTable.faceUp[destination].Count;
-                    if (gameTable.faceUp[source][0].getType() != "King") return;
+                    if (gameTable.faceUp[source][0].rank != Face.king) return;
                     foreach (Card card in gameTable.faceUp[source].ToList())
                     {
                         gameTable.faceUp[destination].Add(card);
@@ -95,7 +99,7 @@ namespace CardGame
                 {
                     if (gameTable.faceUpDeck.Count == 0) return;
                     Card card = gameTable.faceUpDeck.Pop();
-                    if (card.getType() == "King")
+                    if (card.rank == Face.king)
                     {
                         gameTable.faceUp[destination].Add(card);
                     }
@@ -113,22 +117,22 @@ namespace CardGame
             {
                 if (gameTable.faceUp[source].Count == 0) return;
                 Card c = gameTable.faceUp[source][^1];
-                if (c.getSuit() == "Hearts" && gameTable.heartAce.Count + 1 == c.getRank())
+                if (c.suit == Suit.hearts && gameTable.heartAce.Count + 1 == (int)c.rank)
                 {
                     gameTable.heartAce.Add(c);
                     gameTable.faceUp[source].Remove(c);
                 }
-                else if (c.getSuit() == "Diamonds" && gameTable.diamondAce.Count + 1 == c.getRank())
+                else if (c.suit == Suit.diamonds && gameTable.diamondAce.Count + 1 == (int)c.rank)
                 {
                     gameTable.diamondAce.Add(c);
                     gameTable.faceUp[source].Remove(c);
                 }
-                else if (c.getSuit() == "Clubs" && gameTable.clubAce.Count + 1 == c.getRank())
+                else if (c.suit == Suit.clubs && gameTable.clubAce.Count + 1 == (int)c.rank)
                 {
                     gameTable.clubAce.Add(c);
                     gameTable.faceUp[source].Remove(c);
                 }
-                else if (c.getSuit() == "Spades" && gameTable.spadeAce.Count + 1 == c.getRank())
+                else if (c.suit == Suit.spades && gameTable.spadeAce.Count + 1 == (int)c.rank)
                 {
                     gameTable.spadeAce.Add(c);
                     gameTable.faceUp[source].Remove(c);
@@ -141,19 +145,19 @@ namespace CardGame
             {
                 if (gameTable.faceUpDeck.Count == 0) return;
                 Card c = gameTable.faceUpDeck.Peek();
-                if (c.getSuit() == "Hearts" && gameTable.heartAce.Count + 1 == c.getRank())
+                if (c.suit == Suit.hearts && gameTable.heartAce.Count + 1 == (int)c.rank)
                 {
                     gameTable.heartAce.Add(gameTable.faceUpDeck.Pop());
                 }
-                else if (c.getSuit() == "Diamonds" && gameTable.diamondAce.Count + 1 == c.getRank())
+                else if (c.suit == Suit.diamonds && gameTable.diamondAce.Count + 1 == (int)c.rank)
                 {
                     gameTable.diamondAce.Add(gameTable.faceUpDeck.Pop());
                 }
-                else if (c.getSuit() == "Clubs" && gameTable.clubAce.Count + 1 == c.getRank())
+                else if (c.suit == Suit.clubs && gameTable.clubAce.Count + 1 == (int)c.rank)
                 {
                     gameTable.clubAce.Add(gameTable.faceUpDeck.Pop());
                 }
-                else if (c.getSuit() == "Spades" && gameTable.spadeAce.Count + 1 == c.getRank())
+                else if (c.suit == Suit.spades && gameTable.spadeAce.Count + 1 == (int)c.rank)
                 {
                     gameTable.spadeAce.Add(gameTable.faceUpDeck.Pop());
                 }
@@ -165,6 +169,7 @@ namespace CardGame
             return gameTable.faceUp[source].Count;
         }
 
+        /*
         // Displays for testing
         public void Display()
         {
@@ -215,5 +220,6 @@ namespace CardGame
             Console.WriteLine();
 
         }
+        */
     }
 }

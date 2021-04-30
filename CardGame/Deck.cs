@@ -24,53 +24,74 @@ public class Deck
     //the switch case statements are to make the console printing look nicer
     public void InitializeDeck()
     {
+        Suit suit = Suit.clubs;
+        Face rank = Face.king;
         deck.Clear();
         for (int i = 1; i <= 4; i++)
         {
-            String suit = null;
             switch (i)
             {
                 case 1:
-                    suit = "Clubs";
+                    suit = Suit.clubs;
                     break;
                 case 2:
-                    suit = "Diamonds";
+                    suit = Suit.diamonds;
                     break;
                 case 3:
-                    suit = "Hearts";
+                    suit = Suit.hearts;
                     break;
                 case 4:
-                    suit = "Spades";
+                    suit = Suit.spades;
                     break;
             }
 
             for (int j = 1; j <= 13; j++)
             {
-                string type = j.ToString();
-                switch (type)
+                switch (j)
                 {
-                    case "1":
-                        type = "Ace";
+                    case 1:
+                        rank = Face.ace;
                         break;
-                    case "11":
-                        type = "Jack";
+                    case 2:
+                        rank = Face.two;
                         break;
-                    case "12":
-                        type = "Queen";
+                    case 3:
+                        rank = Face.three;
                         break;
-                    case "13":
-                        type = "King";
+                    case 4:
+                        rank = Face.four;
+                        break;
+                    case 5:
+                        rank = Face.five;
+                        break;
+                    case 6:
+                        rank = Face.six;
+                        break;
+                    case 7:
+                        rank = Face.seven;
+                        break;
+                    case 8:
+                        rank = Face.eight;
+                        break;
+                    case 9:
+                        rank = Face.nine;
+                        break;
+                    case 10:
+                        rank = Face.ten;
+                        break;
+                    case 11:
+                        rank = Face.jack;
+                        break;
+                    case 12:
+                        rank = Face.queen;
+                        break;
+                    case 13:
+                        rank = Face.king;
                         break;
                 }
                 Card card;
-                if (j >= 10)
-                {
-                    card = new Card(suit, type, 10);
-                }
-                else
-                {
-                    card = new Card(suit, type, j);
-                }
+                card = new Card(suit, rank);
+                
                 deck.Push(card);
             }
         }
