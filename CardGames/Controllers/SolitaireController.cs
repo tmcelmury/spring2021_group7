@@ -59,12 +59,17 @@ namespace CardGames
             if (source > 0 && index >= gameTable.faceUp[source].Count) return;
             if ((gameTable.faceUp[source].Count != 0 && (gameTable.faceUp[destination].Count != 0)) || (source == 0 && gameTable.onDeck != null && (gameTable.faceUp[destination].Count != 0)))
             {
+                Console.WriteLine("Hits init");
                 if (source > 0)
                 {
+                    Console.WriteLine("From column");
                     Card c = gameTable.faceUp[source][index];
                     Card lastInDest = gameTable.faceUp[destination][^1];
+                    Console.WriteLine("Color?");
                     if (c.GetColor() == lastInDest.GetColor()) return;
+                    Console.WriteLine("Color passed - Rank? : " + c.GetRank() + " " + lastInDest.GetRank());
                     if (c.GetRank() != lastInDest.GetRank() - 1) return;
+                    Console.WriteLine("Rank passes");
                     int initialCount = gameTable.faceUp[source].Count;
                     for (int i = index; i < initialCount; i++)
                     {
@@ -77,13 +82,18 @@ namespace CardGames
                 }
                 else
                 {
+                    Console.WriteLine("From deck");
                     if (gameTable.onDeck == null) return;
                     Card c = gameTable.onDeck;
                     Card lastInDest = gameTable.faceUp[destination][^1];
+                    Console.WriteLine("Color?");
                     if (c.GetColor() == lastInDest.GetColor()) return;
+                    Console.WriteLine("Color good, rank?" + c.GetRank() + " " + lastInDest.GetRank());
                     if (c.GetRank() != lastInDest.GetRank() - 1) return;
+                    Console.WriteLine("Rank good");
                     Card drawnCard = gameTable.onDeck;
                     gameTable.deck.GetDeck().Remove(drawnCard);
+                    gameTable.onDeck = null;
                     gameTable.faceUp[destination].Add(drawnCard);
                 }
             }
@@ -93,12 +103,11 @@ namespace CardGames
                 if (source > 0)
                 {
                     int previous = gameTable.faceUp[destination].Count;
-                    if (gameTable.faceUp[source][0].GetType() != "King") return;
+                    if (gameTable.faceUp[source][0].GetType() != "K") return;
                     foreach (Card card in gameTable.faceUp[source].ToList())
                     {
                         gameTable.faceUp[destination].Add(card);
                     }
-
                     if (previous == gameTable.faceUp[destination].Count) return;
                     gameTable.faceUp[source].Clear();
                     StackFlip(source);
@@ -108,10 +117,11 @@ namespace CardGames
                     if (gameTable.onDeck == null) return;
                     Card card = gameTable.onDeck;
 
-                    if (card.GetType() == "King")
+                    if (card.GetType() == "K")
                     {
                         gameTable.faceUp[destination].Add(card);
                         gameTable.deck.GetDeck().Remove(card);
+                        gameTable.onDeck = null;
                     }
                 }
             }
@@ -161,24 +171,28 @@ namespace CardGames
                     drawnCard = gameTable.onDeck;
                     gameTable.heartAce.Add(drawnCard);
                     gameTable.deck.GetDeck().Remove(drawnCard);
+                    gameTable.onDeck = null;
                 }
                 else if (c.GetSuit() == "Diamonds" && gameTable.diamondAce.Count + 1 == c.GetRank())
                 {
                     drawnCard = gameTable.onDeck;
                     gameTable.diamondAce.Add(drawnCard);
                     gameTable.deck.GetDeck().Remove(drawnCard);
+                    gameTable.onDeck = null;
                 }
                 else if (c.GetSuit() == "Clubs" && gameTable.clubAce.Count + 1 == c.GetRank())
                 {
                     drawnCard = gameTable.onDeck;
                     gameTable.clubAce.Add(drawnCard);
                     gameTable.deck.GetDeck().Remove(drawnCard);
+                    gameTable.onDeck = null;
                 }
                 else if (c.GetSuit() == "Spades" && gameTable.spadeAce.Count + 1 == c.GetRank())
                 {
                     drawnCard = gameTable.onDeck;
                     gameTable.spadeAce.Add(drawnCard);
                     gameTable.deck.GetDeck().Remove(drawnCard);
+                    gameTable.onDeck = null;
                 }
             }
             Display();

@@ -40,9 +40,9 @@ namespace CardGames
                 rank = type switch
                 {
                     "10" => 10,
-                    "Jack" => 11,
-                    "Queen" => 12,
-                    "King" => 13,
+                    "J" => 11,
+                    "Q" => 12,
+                    "K" => 13,
                     _ => rank
                 };
         }
