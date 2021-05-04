@@ -66,7 +66,7 @@ namespace CardGames
             //this is the case where everybody busted, the dealer is favored
             if (!busted.Any(o => o != busted[0]) && busted[0])
             {
-                //Console.WriteLine("DEALER WINS!");
+                Console.WriteLine("DEALER WINS!");
                 finalWinners.Add(0);
                 return finalWinners;
             }
@@ -80,7 +80,7 @@ namespace CardGames
                 //if the dealer is one of the players with the best score, dealer wins
                 if (winners.Contains(0))
                 {
-                    //Console.WriteLine("DEALER WINS!");
+                    Console.WriteLine("DEALER WINS!");
                     finalWinners.Add(0);
                     return finalWinners;
                 }
@@ -88,7 +88,7 @@ namespace CardGames
                 {
                     foreach (var winner in winners)
                     {
-                        //Console.WriteLine("PLAYER {0} WINS!", winner);
+                        Console.WriteLine("PLAYER {0} WINS!", winner);
                         finalWinners.Add(winner);
                     }
                     return finalWinners;
@@ -102,11 +102,10 @@ namespace CardGames
          */
         public void PlayGame()
         {
-            //Console.WriteLine("Welcome to BlackJack!\n");
-            //Console.WriteLine("How many players are there? (Max 6)\n");
+            Console.WriteLine("Welcome to BlackJack!\n");
+            Console.WriteLine("How many players are there? (Max 6)\n");
 
-            //int numPlayers = Convert.ToInt32(Console.ReadLine());
-            int numPlayers = 6; //UI input;
+            int numPlayers = Convert.ToInt32(Console.ReadLine());
 
             CreatePlayers(numPlayers);
 

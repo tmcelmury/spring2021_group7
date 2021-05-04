@@ -232,7 +232,7 @@ namespace CardGames
                 Console.Write($"{i}: ");
                 foreach (Card c in gameTable.faceDown[i])
                 {
-                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write("X ");
                 }
                 foreach (Card c in gameTable.faceUp[i])
